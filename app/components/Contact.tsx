@@ -83,14 +83,14 @@ export default function Contact() {
                     <a href="tel:+27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
                   </div>
                   {/* Email Us Card */}
-                  <div className="bg-white dark:bg-blue-950/95 rounded-2xl shadow-lg border border-gray-200 dark:border-blue-900 p-8 text-center flex flex-col items-center">
-                    <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mb-6">
-                      <Mail className="h-10 w-10 text-white" />
+                  <div className="bg-white dark:bg-blue-950/95 rounded-2xl shadow-lg border border-gray-200 dark:border-blue-900 p-6 sm:p-8 text-center flex flex-col items-center min-w-0 max-w-xs mx-auto">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                      <Mail className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Email Us</h3>
-                    <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Send us a detailed message</p>
-                    <a href="mailto:info@oratalesedi.co.za" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">info@oratalesedi.co.za</a>
-                    <a href="mailto:info@oratalesedi.co.za" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Send Email</a>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 leading-tight">Email Us</h3>
+                    <p className="mb-1 sm:mb-2 text-sm sm:text-base text-gray-700 dark:text-blue-100 leading-snug">Send us a detailed message</p>
+                    <a href="mailto:info@oratalesedi.co.za" className="block break-all text-base sm:text-lg font-bold text-blue-700 dark:text-blue-300 mb-2 sm:mb-4">info@oratalesedi.co.za</a>
+                    <a href="mailto:info@oratalesedi.co.za" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 sm:px-6 rounded-lg shadow transition-colors duration-300 text-base sm:text-lg">Send Email</a>
                   </div>
                   {/* WhatsApp Card */}
                   <div className="bg-white dark:bg-blue-950/95 rounded-2xl shadow-lg border border-gray-200 dark:border-blue-900 p-8 text-center flex flex-col items-center">

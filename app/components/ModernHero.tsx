@@ -41,35 +41,49 @@ export default function ModernHero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-32"
       style={{
-        backgroundImage: `url('/images/hero-excavator.jpg')`,
+        backgroundImage: `url('/images/oratalesedi-hero-img.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-blue-950/80 pointer-events-none transition-colors duration-500"></div>
+      <div className="absolute inset-0 bg-white/0 dark:bg-blue-900/30 pointer-events-none transition-colors duration-500"></div>
+      {/* Bottom gradient for light mode only */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-48 dark:hidden pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, white 10%, rgba(255, 255, 255, 0) 45%)'
+        }}
+      ></div>
+      {/* Bottom gradient for dark mode only */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-48 hidden dark:block pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top,rgb(21, 34, 77) 15%, rgba(23,36,79,0) 50%)'
+        }}
+      ></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
           {/* Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/90 dark:bg-blue-900/60 backdrop-blur-sm border border-oratalesedi-blue/30 dark:border-blue-400/30 rounded-full px-6 py-3 shadow-lg dark:shadow-colored">
-              <div className="w-2 h-2 bg-oratalesedi-blue rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-oratalesedi-blue">100% Black Woman Owned • BBBEE Level 1</span>
+            <div className="inline-flex items-center space-x-2 bg-white/60 dark:bg-blue-900/60 backdrop-blur-sm border border-oratalesedi-blue/30 dark:border-blue-400/30 rounded-full px-6 py-3 shadow-lg dark:shadow-colored">
+              <div className="w-2 h-2 bg-oratalesedi-blue dark:bg-white rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-oratalesedi-blue dark:text-white">100% Black Woman Owned • BBBEE Level 1</span>
             </div>
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-black leading-tight text-black dark:text-white">
-                <span className="bg-gradient-to-r from-oratalesedi-black via-oratalesedi-blue to-oratalesedi-blue-light bg-clip-text text-transparent dark:from-blue-200 dark:via-blue-400 dark:to-blue-600 dark:drop-shadow-[0_0_16px_rgba(59,130,246,0.4)]">
+              <h1 className="text-5xl lg:text-7xl font-black leading-tight text-black dark:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
+                <span className="bg-gradient-to-r from-oratalesedi-black via-oratalesedi-blue to-oratalesedi-blue-light bg-clip-text text-transparent dark:from-blue-200 dark:via-blue-400 dark:to-blue-600 dark:drop-shadow-[0_0_16px_rgba(59,130,246,0.4)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
                   {slides[currentSlide].title}
                 </span>
                 <br />
-                <span className="text-3xl lg:text-4xl font-bold text-oratalesedi-blue dark:text-blue-400">
+                <span className="text-3xl lg:text-4xl font-bold text-oratalesedi-blue dark:text-blue-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
                   {slides[currentSlide].subtitle}
                 </span>
               </h1>
-              <p className="text-xl text-gray-800 dark:text-blue-100 leading-relaxed max-w-2xl">
+              <p className="text-xl text-blue-100 leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
                 {slides[currentSlide].description}
               </p>
             </div>
@@ -102,8 +116,8 @@ export default function ModernHero() {
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl mb-3 group-hover:bg-blue-200 dark:group-hover:bg-blue-700 transition-colors duration-300 shadow-modern dark:shadow-colored">
                     <stat.icon className="h-6 w-6 text-oratalesedi-blue dark:text-blue-400" />
                   </div>
-                  <div className="text-2xl font-bold text-black dark:text-blue-100">{stat.value}</div>
-                  <div className="text-sm text-gray-800 dark:text-blue-200">{stat.label}</div>
+                  <div className="text-2xl font-bold text-blue-100 dark:text-blue-200">{stat.value}</div>
+                  <div className="text-sm text-blue-100 dark:text-blue-200">{stat.label}</div>
                 </div>
               ))}
             </div>
