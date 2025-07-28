@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Clock, FileText, MessageSquare, ArrowRight, Building, Users } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, FileText, MessageSquare, ArrowRight, Building, Users, ChevronDown, Calendar } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +19,7 @@ export default function ContactPage() {
     service: "",
     message: "",
   })
+  const [showEmailOptions, setShowEmailOptions] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -126,16 +127,16 @@ export default function ContactPage() {
             {contactMethods.map((method, index) => (
               <Card
                 key={index}
-                className="group bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="group bg-white/90 dark:bg-gray-900/95 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light p-4 rounded-full w-fit mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <method.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-black dark:text-white mb-2">{method.title}</h3>
-                  <p className="text-gray-700 dark:text-blue-200 text-sm mb-3">{method.description}</p>
-                  <p className="text-oratalesedi-blue font-semibold mb-4">{method.contact}</p>
-                  <Button size="sm" className="bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{method.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">{method.description}</p>
+                  <p className="text-oratalesedi-blue dark:text-blue-400 font-semibold mb-4">{method.contact}</p>
+                  <Button size="sm" className="bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark dark:bg-blue-600 dark:hover:bg-blue-700">
                     {method.action}
                   </Button>
                 </CardContent>
@@ -249,17 +250,122 @@ export default function ContactPage() {
               <div className="bg-oratalesedi-black dark:bg-blue-950 p-6 rounded-2xl text-white">
                 <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  <Button className="w-full bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark">
+                  <Button 
+                    className="w-full bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark"
+                    onClick={() => {
+                      // Download company brochure PDF
+                      const link = document.createElement('a');
+                      link.href = '/company-brochure.pdf.pdf';
+                      link.download = 'Oratalesedi-Company-Profile.pdf';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
                     <FileText className="h-4 w-4 mr-2" />
                     Download Company Profile
                   </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full border-white text-white hover:bg-white hover:text-oratalesedi-black bg-transparent"
-                  >
-                    <Users className="h-4 w-4 mr-2" />
-                    Schedule Site Visit
-                  </Button>
+                  <div className="relative">
+                    <Button
+                      variant="outline"
+                      className="w-full border-white text-white hover:bg-white hover:text-oratalesedi-black bg-transparent"
+                      onClick={() => setShowEmailOptions(!showEmailOptions)}
+                    >
+                      <Users className="h-4 w-4 mr-2" />
+                      Schedule Site Visit
+                      <ChevronDown className="h-4 w-4 ml-2" />
+                    </Button>
+                    
+                    {showEmailOptions && (
+                      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10">
+                        <div className="p-2 space-y-1">
+                          <button
+                            onClick={() => {
+                              const subject = encodeURIComponent('Site Visit Request - Oratalesedi');
+                              const body = encodeURIComponent(`Dear Oratalesedi Team,
+
+I would like to schedule a site visit to discuss potential collaboration opportunities.
+
+Company: [Your Company Name]
+Contact Person: [Your Name]
+Phone: [Your Phone Number]
+Preferred Date: [Date]
+Preferred Time: [Time]
+
+Please contact me to arrange a suitable time.
+
+Best regards,
+[Your Name]`);
+                              window.open(`mailto:info@oratalesedi.co.za?subject=${subject}&body=${body}`, '_self');
+                              setShowEmailOptions(false);
+                            }}
+                            className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
+                          >
+                            <Mail className="h-4 w-4 mr-2" />
+                            Default Email Client
+                          </button>
+                          <button
+                            onClick={() => {
+                              const eventTitle = encodeURIComponent('Site Visit - Oratalesedi');
+                              const eventDescription = encodeURIComponent(`Site Visit Request
+
+Company: [Your Company Name]
+Contact Person: [Your Name]
+Phone: [Your Phone Number]
+Purpose: Discuss potential collaboration opportunities
+
+Location: Oratalesedi Head Office
+Address: 16 Lowe Street, Fransville, Emalahleni 1035, Mpumalanga Province, South Africa
+
+Please contact us to confirm the meeting time.
+
+Contact: info@oratalesedi.co.za
+Phone: +27 76 996 3322`);
+                              const startDate = new Date();
+                              startDate.setDate(startDate.getDate() + 1); // Tomorrow
+                              const endDate = new Date(startDate);
+                              endDate.setHours(endDate.getHours() + 1); // 1 hour duration
+                              
+                              const startTime = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                              const endTime = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                              
+                              window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDescription}&location=16%20Lowe%20Street%2C%20Fransville%2C%20Emalahleni%201035%2C%20Mpumalanga%20Province%2C%20South%20Africa&dates=${startTime}/${endTime}&add=info@oratalesedi.co.za`, '_blank');
+                              setShowEmailOptions(false);
+                            }}
+                            className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
+                          >
+                            <Calendar className="h-4 w-4 mr-2" />
+                            Google Calendar
+                          </button>
+                          <button
+                            onClick={() => {
+                              const subject = encodeURIComponent('Site Visit Request - Oratalesedi');
+                              const body = encodeURIComponent(`Dear Oratalesedi Team,
+
+I would like to schedule a site visit to discuss potential collaboration opportunities.
+
+Company: [Your Company Name]
+Contact Person: [Your Name]
+Phone: [Your Phone Number]
+Preferred Date: [Date]
+Preferred Time: [Time]
+
+Please contact me to arrange a suitable time.
+
+Best regards,
+[Your Name]`);
+                              window.open(`https://outlook.live.com/mail/0/deeplink/compose?to=info@oratalesedi.co.za&subject=${subject}&body=${body}`, '_blank');
+                              setShowEmailOptions(false);
+                            }}
+                            className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded flex items-center"
+                          >
+                            <Mail className="h-4 w-4 mr-2" />
+                            Outlook
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -383,6 +489,52 @@ export default function ContactPage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </form>
+
+                {/* Map Section */}
+                <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Find Our Office</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Visit us at our head office in Emalahleni, Mpumalanga
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    {/* Getting Here Info */}
+                    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">Getting Here</h4>
+                      <div className="space-y-3 text-sm">
+                        <div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">By Car:</span> Take N12 highway towards Witbank/Emalahleni. Exit at Lowe Street.
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">Parking:</span> Free on-site parking available.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Map */}
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                      <div className="aspect-video w-full">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.1234567890123!2d29.12345678901234!3d-25.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDUyJzM1LjYiUyAyOcKwMDcnMzQuNiJF!5e0!3m2!1sen!2sza!4v1234567890123"
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0 }}
+                          allowFullScreen
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          className="w-full h-full"
+                          title="Oratalesedi Office Location"
+                        ></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
