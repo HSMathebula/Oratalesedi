@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X, Phone, Mail, ArrowRight } from "lucide-react"
@@ -8,28 +8,40 @@ import { Button } from "@/components/ui/button"
 import DarkModeToggle from "./DarkModeToggle"
 
 export default function ModernHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
     if (typeof window !== 'undefined') {
-      const handleScroll = () => setIsScrolled(window.scrollY > 50)
-      window.addEventListener("scroll", handleScroll)
-      return () => window.removeEventListener("scroll", handleScroll)
+      const handleScroll = () => setIsScrolled(window.scrollY > 50);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
-  }, [])
+  }, []);
 
-  if (!mounted) return null
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (servicesRef.current && !(servicesRef.current as HTMLDivElement).contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  if (!mounted) return null;
 
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
+    { name: "Services", href: "/services" }, // Placeholder for dropdown
     { name: "Portfolio", href: "/portfolio" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
     <header
@@ -78,30 +90,61 @@ export default function ModernHeader() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-10">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`relative font-bold text-lg transition-all duration-300
+          <nav className="hidden lg:flex items-center space-x-0">
+            {navigation.map((item) => {
+              if (item.name === "Services") {
+                return (
+                  <div
+                    key="Services"
+                    className="relative"
+                    ref={servicesRef}
+                  >
+                    <button
+                      className="relative font-bold text-lg text-oratalesedi-black dark:text-blue-100 hover:text-oratalesedi-blue dark:hover:text-white transition-all duration-300 py-2 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-oratalesedi-blue focus-visible:ring-offset-2"
+                      aria-haspopup="true"
+                      aria-expanded={servicesOpen}
+                      tabIndex={0}
+                      onClick={() => setServicesOpen((open) => !open)}
+                    >
+                      Services
+                    </button>
+                    {servicesOpen && (
+                      <div
+                        className="absolute left-0 mt-2 w-56 bg-white dark:bg-blue-950 border border-gray-200 dark:border-blue-900 rounded-xl shadow-lg z-50"
+                      >
+                        <Link href="/services/mining" className="block px-6 py-3 text-left text-oratalesedi-black dark:text-blue-100 hover:bg-blue-50 dark:hover:bg-blue-900 rounded-2xl" onClick={() => setServicesOpen(false)}>Mining Services</Link>
+                        <Link href="/services/construction" className="block px-6 py-3 text-left text-oratalesedi-black dark:text-blue-100 hover:bg-blue-50 dark:hover:bg-blue-900 rounded-2xl" onClick={() => setServicesOpen(false)}>Construction</Link>
+                        <Link href="/services/renewable-energy" className="block px-6 py-3 text-left text-oratalesedi-black dark:text-blue-100 hover:bg-blue-50 dark:hover:bg-blue-900 rounded-2xl" onClick={() => setServicesOpen(false)}>Renewable Energy</Link>
+                      </div>
+                    )}
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`relative font-bold text-lg transition-all duration-300 px-6 py-2 rounded-lg
                   ${isScrolled 
                     ? "text-oratalesedi-black dark:text-white" 
                     : "text-oratalesedi-black dark:text-white drop-shadow-lg"
                   }
                   hover:text-oratalesedi-blue dark:hover:text-blue-300
+                  hover:bg-blue-50 dark:hover:bg-blue-900
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-oratalesedi-blue focus-visible:ring-offset-2
                   group
                 `}
               >
                 {item.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light rounded-full transition-all duration-300 group-hover:w-full group-focus:w-full"></span>
               </Link>
-            ))}
+                );
+              }
+            })}
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link href="/quote">
+            <Link href="/quote#quote-form">
               <Button
                 variant="outline"
                 size="lg"
@@ -150,7 +193,7 @@ export default function ModernHeader() {
                 </Link>
               ))}
               <div className="flex flex-col space-y-3 pt-4">
-                <Link href="/quote">
+                <Link href="/quote#quote-form">
                   <Button
                     variant="outline"
                     size="lg"

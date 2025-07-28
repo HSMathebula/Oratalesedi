@@ -149,7 +149,7 @@ export default function QuotePage() {
       </section>
 
       {/* Quote Form */}
-      <section className="py-20 bg-white dark:bg-blue-950">
+      <section id="quote-form" className="py-20 bg-white dark:bg-blue-950">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto shadow-2xl border-0 bg-white dark:bg-blue-950/90">
             <CardHeader className="text-center pb-8">
@@ -169,7 +169,7 @@ export default function QuotePage() {
                 {currentStep === 1 && (
                   <div className="space-y-8">
                     <div>
-                      <label className="block text-lg font-semibold text-gray-900 mb-6">
+                      <label className="block text-lg font-semibold text-gray-900 dark:text-white mb-6">
                         What type of service do you need?
                       </label>
                       <div className="grid md:grid-cols-3 gap-6">

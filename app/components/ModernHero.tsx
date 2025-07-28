@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play, Award, Users, Calendar, Zap } from "lucide-react"
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 
 export default function ModernHero() {
@@ -79,7 +80,7 @@ export default function ModernHero() {
                   {slides[currentSlide].title}
                 </span>
                 <br />
-                <span className="text-3xl lg:text-4xl font-bold text-oratalesedi-blue dark:text-blue-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
+                <span className="text-3xl lg:text-3xl font-bold text-oratalesedi-blue dark:text-blue-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
                   {slides[currentSlide].subtitle}
                 </span>
               </h1>
@@ -89,13 +90,15 @@ export default function ModernHero() {
             </div>
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="group bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600"
-              >
-                Explore Our Services
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
+              <Link href="/services">
+                <Button
+                  size="lg"
+                  className="group bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600"
+                >
+                  Explore Our Services
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"

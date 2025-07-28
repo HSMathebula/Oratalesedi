@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -130,17 +131,21 @@ export default function Contact() {
             <div className="bg-oratalesedi-black dark:bg-blue-950/95 border border-gray-200 dark:border-blue-900 p-6 rounded-2xl text-white shadow-lg">
               <h3 className="text-lg font-semibold mb-4 drop-shadow">Quick Actions</h3>
               <div className="space-y-3">
-                <Button className="w-full bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark focus:outline-2 focus:outline-blue-600 drop-shadow">
-                  <FileText className="h-4 w-4 mr-2" />
-                  Download Company Profile
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full border-white text-white hover:bg-white hover:text-oratalesedi-black bg-transparent focus:outline-2 focus:outline-blue-600 drop-shadow"
-                >
-                  <MessageSquare className="h-4 w-4 mr-2" />
-                  Request Detailed Quote
-                </Button>
+                <a href="/company-brochure.pdf.pdf" download className="w-full block">
+                  <Button className="w-full bg-oratalesedi-blue text-white hover:bg-oratalesedi-blue-dark focus:outline-2 focus:outline-blue-600 drop-shadow">
+                    <FileText className="h-4 w-4 mr-2" />
+                    Download Company Profile
+                  </Button>
+                </a>
+                <Link href="/quote#quote-form">
+                  <Button
+                    variant="outline"
+                    className="w-full border-white text-white hover:bg-white hover:text-oratalesedi-black bg-transparent focus:outline-2 focus:outline-blue-600 drop-shadow"
+                  >
+                    <MessageSquare className="h-4 w-4 mr-2" />
+                    Request Detailed Quote
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
