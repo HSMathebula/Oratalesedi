@@ -7,7 +7,7 @@ export default function AboutPage() {
   const achievements = [
     { icon: Calendar, value: "2012", label: "Founded", color: "blue" },
     { icon: Users, value: "80+", label: "Team Members", color: "blue-light" },
-    { icon: Award, value: "56+", label: "Projects Completed", color: "blue-dark" },
+    { icon: Award, value: "150+", label: "Projects Completed", color: "blue-dark" },
     { icon: MapPin, value: "4", label: "CIDB Grade", color: "blue" },
   ]
 

@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Building, Settings, Zap, ArrowRight, CheckCircle } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function ModernServices() {
   const [activeService, setActiveService] = useState(0)
@@ -15,6 +16,7 @@ export default function ModernServices() {
       category: "Mining Services",
       icon: Settings,
       color: "blue",
+      href: "/services/mining",
       description: "Comprehensive mining solutions for optimal operational efficiency",
       services: [
         "Underground & Above ground Belt Conveyor Cleaning",
@@ -30,6 +32,7 @@ export default function ModernServices() {
       category: "Construction",
       icon: Building,
       color: "blue-light",
+      href: "/services/construction",
       description: "Modern construction solutions with sustainable practices",
       services: [
         "Civil Engineering Projects",
@@ -45,6 +48,7 @@ export default function ModernServices() {
       category: "Renewable Energy",
       icon: Zap,
       color: "blue-dark",
+      href: "/services/renewable-energy",
       description: "Leading the future with clean energy solutions",
       services: [
         "Solar Energy System Design & Installation",
@@ -82,14 +86,7 @@ export default function ModernServices() {
   }
 
   return (
-    <section id="services" className="py-24 relative" style={{
-      backgroundImage: `url('/images/hero-excavator.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}>
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-blue-950/80 pointer-events-none transition-colors duration-500"></div>
+    <section id="services" className="py-24 relative bg-white dark:bg-blue-950">
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -167,13 +164,15 @@ export default function ModernServices() {
               ))}
             </div>
 
-            <Button
-              size="lg"
-              className={`bg-gradient-to-r ${getColorClasses(services[activeService].color).bg} text-white hover:shadow-xl transition-all duration-300 group focus:outline-2 focus:outline-blue-600 drop-shadow`}
-            >
-              Learn More About {services[activeService].category}
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
+            <Link href={services[activeService].href}>
+              <Button
+                size="lg"
+                className={`bg-gradient-to-r ${getColorClasses(services[activeService].color).bg} text-white hover:shadow-xl transition-all duration-300 group focus:outline-2 focus:outline-blue-600 drop-shadow mt-6`}
+              >
+                Learn More About {services[activeService].category}
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
           </div>
 
           {/* Service Visual */}

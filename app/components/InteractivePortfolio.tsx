@@ -19,7 +19,7 @@ export default function InteractivePortfolio() {
       status: "Completed July 2024",
       location: "Mpumalanga, South Africa",
       description:
-        "Comprehensive underground belt conveyor cleaning and maintenance services ensuring optimal mining operations.",
+        "Comprehensive underground belt conveyor cleaning and maintenance services ensuring optimal mining operations at one of South Africa's leading coal mines.",
       contact: {
         name: "Angela Steenkamp",
         position: "Senior Contracts Administrator",
@@ -35,7 +35,7 @@ export default function InteractivePortfolio() {
       value: "R9,000,000.00",
       status: "Completed August 2024",
       location: "Free State, South Africa",
-      description: "Advanced belt cleaning systems and maintenance protocols for enhanced mining efficiency.",
+      description: "Advanced belt cleaning systems and maintenance protocols for enhanced mining efficiency at Mafube's operations.",
       contact: {
         name: "Angela Steenkamp",
         position: "Senior Contracts Administrator",
@@ -81,15 +81,7 @@ export default function InteractivePortfolio() {
   const clientLogos = ["Thungela Operations", "Mafube Coal Mining", "JEDD Civils", "Greenside Colliery"]
 
   return (
-    <section id="portfolio" className="py-24 relative" style={{
-      backgroundImage: `url('/images/hero-excavator.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}>
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-blue-950/80 pointer-events-none transition-colors duration-500"></div>
-
+    <section id="portfolio" className="py-24 relative bg-white dark:bg-blue-950">
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal direction="up" className="text-center mb-16">
           <h2 className="text-5xl font-black text-black dark:text-white mb-6 bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent drop-shadow">
@@ -133,46 +125,46 @@ export default function InteractivePortfolio() {
                       <span className="text-sm text-black dark:text-blue-100 font-mono bg-white dark:bg-blue-950/90 px-3 py-1 rounded-full drop-shadow">
                         {project.contract}
                       </span>
-                      <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-300" />
+                      <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300" />
                     </div>
                   </div>
-                  <CardTitle className="text-xl leading-tight font-bold text-black dark:text-white group-hover:text-blue-600 transition-colors duration-300 drop-shadow">
+                  <CardTitle className="text-xl leading-tight font-bold text-black dark:text-white group-hover:text-blue-400 dark:group-hover:text-blue-300 transition-colors duration-300 drop-shadow">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-900 dark:text-blue-100 font-semibold text-lg drop-shadow">{project.client}</CardDescription>
+                  <CardDescription className="text-gray-900 dark:text-blue-100 font-semibold text-lg drop-shadow group-hover:text-blue-600 dark:group-hover:text-blue-200 transition-colors duration-300">{project.client}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="relative z-10">
                   <div className="space-y-4 mb-6">
                     {/* Value Stat */}
-                    <div className="flex items-center text-sm font-bold bg-green-100 dark:bg-green-800/80 p-4 rounded-2xl border border-green-200 dark:border-green-700 shadow group transition-all duration-300 cursor-pointer hover:bg-green-200 dark:hover:bg-green-900 hover:shadow-2xl hover:scale-[1.03]">
-                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 dark:from-green-400 dark:to-green-600 rounded-xl shadow group-hover:from-green-600 group-hover:to-green-800 dark:group-hover:from-green-500 dark:group-hover:to-green-800 mr-3 transition-all duration-300">
-                        <Banknote className="h-6 w-6 text-green-900 dark:text-green-100" />
+                    <div className="flex items-center text-sm font-bold bg-green-100 dark:bg-green-900/90 p-4 rounded-2xl border border-green-200 dark:border-green-600 shadow group transition-all duration-300 cursor-pointer hover:bg-green-200 dark:hover:bg-green-800 hover:shadow-2xl hover:scale-[1.03]">
+                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 dark:from-green-400 dark:to-green-600 rounded-xl shadow group-hover:from-green-600 group-hover:to-green-800 dark:group-hover:from-green-300 dark:group-hover:to-green-500 mr-3 transition-all duration-300">
+                        <Banknote className="h-6 w-6 text-white" />
                       </span>
-                      <span className="font-bold text-lg text-green-900 dark:text-green-100 group-hover:text-green-950 dark:group-hover:text-white transition-colors duration-300">{project.value}</span>
+                      <span className="font-bold text-lg text-green-900 dark:text-green-100 group-hover:text-green-950 dark:group-hover:text-green-50 transition-colors duration-300">{project.value}</span>
                     </div>
                     {/* Status Stat */}
-                    <div className="flex items-center text-sm font-semibold bg-blue-100 dark:bg-blue-800/80 p-4 rounded-2xl border border-blue-200 dark:border-blue-700 shadow group transition-all duration-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900 hover:shadow-2xl hover:scale-[1.03]">
-                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 rounded-xl shadow group-hover:from-blue-600 group-hover:to-blue-800 dark:group-hover:from-blue-500 dark:group-hover:to-blue-800 mr-3 transition-all duration-300">
-                        <Calendar className="h-6 w-6 text-blue-900 dark:text-blue-100" />
+                    <div className="flex items-center text-sm font-semibold bg-blue-100 dark:bg-blue-900/90 p-4 rounded-2xl border border-blue-200 dark:border-blue-600 shadow group transition-all duration-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-800 hover:shadow-2xl hover:scale-[1.03]">
+                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600 rounded-xl shadow group-hover:from-blue-600 group-hover:to-blue-800 dark:group-hover:from-blue-300 dark:group-hover:to-blue-500 mr-3 transition-all duration-300">
+                        <Calendar className="h-6 w-6 text-white" />
                       </span>
-                      <span className="font-medium text-blue-900 dark:text-blue-100 group-hover:text-blue-950 dark:group-hover:text-white transition-colors duration-300">{project.status}</span>
+                      <span className="font-medium text-blue-900 dark:text-blue-100 group-hover:text-blue-950 dark:group-hover:text-blue-50 transition-colors duration-300">{project.status}</span>
                     </div>
                     {/* Contact Stat */}
-                    <div className="flex items-center text-sm font-semibold bg-orange-100 dark:bg-orange-800/80 p-4 rounded-2xl border border-orange-200 dark:border-orange-700 shadow group transition-all duration-300 cursor-pointer hover:bg-orange-200 dark:hover:bg-orange-900 hover:shadow-2xl hover:scale-[1.03]">
-                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-400 dark:to-orange-600 rounded-xl shadow group-hover:from-orange-600 group-hover:to-orange-800 dark:group-hover:from-orange-500 dark:group-hover:to-orange-800 mr-3 transition-all duration-300">
-                        <User className="h-6 w-6 text-orange-900 dark:text-orange-100" />
+                    <div className="flex items-center text-sm font-semibold bg-orange-100 dark:bg-orange-900/90 p-4 rounded-2xl border border-orange-200 dark:border-orange-600 shadow group transition-all duration-300 cursor-pointer hover:bg-orange-200 dark:hover:bg-orange-800 hover:shadow-2xl hover:scale-[1.03]">
+                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-400 dark:to-orange-600 rounded-xl shadow group-hover:from-orange-600 group-hover:to-orange-800 dark:group-hover:from-orange-300 dark:group-hover:to-orange-500 mr-3 transition-all duration-300">
+                        <User className="h-6 w-6 text-white" />
                       </span>
-                      <span className="font-medium text-orange-900 dark:text-orange-100 group-hover:text-orange-950 dark:group-hover:text-white transition-colors duration-300">
+                      <span className="font-medium text-orange-900 dark:text-orange-100 group-hover:text-orange-950 dark:group-hover:text-orange-50 transition-colors duration-300">
                         {project.contact.name} - {project.contact.position}
                       </span>
                     </div>
                     {/* Location Stat */}
-                    <div className="flex items-center text-sm font-semibold bg-purple-100 dark:bg-purple-800/80 p-4 rounded-2xl border border-purple-200 dark:border-purple-700 shadow group transition-all duration-300 cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-900 hover:shadow-2xl hover:scale-[1.03]">
-                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 dark:from-purple-400 dark:to-purple-600 rounded-xl shadow group-hover:from-purple-600 group-hover:to-purple-800 dark:group-hover:from-purple-500 dark:group-hover:to-purple-800 mr-3 transition-all duration-300">
-                        <MapPin className="h-6 w-6 text-purple-900 dark:text-purple-100" />
+                    <div className="flex items-center text-sm font-semibold bg-purple-100 dark:bg-purple-900/90 p-4 rounded-2xl border border-purple-200 dark:border-purple-600 shadow group transition-all duration-300 cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-800 hover:shadow-2xl hover:scale-[1.03]">
+                      <span className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 dark:from-purple-400 dark:to-purple-600 rounded-xl shadow group-hover:from-purple-600 group-hover:to-purple-800 dark:group-hover:from-purple-300 dark:group-hover:to-purple-500 mr-3 transition-all duration-300">
+                        <MapPin className="h-6 w-6 text-white" />
                       </span>
-                      <span className="font-medium text-purple-900 dark:text-purple-100 group-hover:text-purple-950 dark:group-hover:text-white transition-colors duration-300">
+                      <span className="font-medium text-purple-900 dark:text-purple-100 group-hover:text-purple-950 dark:group-hover:text-purple-50 transition-colors duration-300">
                         {project.location}
                       </span>
                     </div>
@@ -196,7 +188,7 @@ export default function InteractivePortfolio() {
 
         {/* Animated Client Logos */}
         <ScrollReveal direction="up" delay={800}>
-          <div className="bg-white dark:bg-blue-950/90 rounded-3xl p-10 shadow-xl border border-gray-100">
+          <div className="bg-white dark:bg-blue-950/90 rounded-3xl p-10 shadow-xl border border-gray-100 dark:border-blue-900">
             <div className="text-center mb-10">
               <h3 className="text-3xl font-bold text-black dark:text-white mb-4 drop-shadow">Trusted by Industry Leaders</h3>
               <p className="text-black dark:text-blue-100 text-lg drop-shadow">
@@ -208,10 +200,10 @@ export default function InteractivePortfolio() {
               {clientLogos.map((client, index) => (
                 <div
                   key={index}
-                  className="text-center p-6 border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-300 transition-all duration-500 transform hover:scale-105 group cursor-pointer"
+                  className="text-center p-6 border border-gray-200 dark:border-blue-800 rounded-xl hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-400 transition-all duration-500 transform hover:scale-105 group cursor-pointer"
                 >
-                  <div className="h-20 bg-white dark:bg-blue-950/90 rounded-lg mb-3 flex items-center justify-center group-hover:from-blue-50 group-hover:to-blue-100 transition-all duration-300">
-                    <span className="text-sm text-black dark:text-blue-100 font-bold group-hover:text-blue-600 transition-colors duration-300 drop-shadow">
+                  <div className="h-20 bg-white dark:bg-blue-950/90 rounded-lg mb-3 flex items-center justify-center group-hover:from-blue-50 group-hover:to-blue-100 dark:group-hover:from-blue-900 dark:group-hover:to-blue-800 transition-all duration-300">
+                    <span className="text-sm text-black dark:text-blue-100 font-bold group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300 drop-shadow">
                       {client}
                     </span>
                   </div>

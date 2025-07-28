@@ -6,8 +6,10 @@ import Image from "next/image"
 import { Menu, X, Phone, Mail, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import DarkModeToggle from "./DarkModeToggle"
+import { useRouter } from "next/navigation"
 
 export default function ModernHeader() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -57,7 +59,7 @@ export default function ModernHeader() {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span className="font-medium">+27 76 996 3322</span>
+              <span className="font-medium">+27 13 656 0747</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
@@ -182,16 +184,68 @@ export default function ModernHeader() {
         {isMenuOpen && (
           <div className="lg:hidden pb-6 border-t border-gray-200/20 bg-white/95 dark:bg-blue-950/95 backdrop-blur-xl rounded-b-2xl shadow-2xl mt-2">
             <nav className="flex flex-col space-y-4 pt-6 px-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="font-bold text-lg text-oratalesedi-black dark:text-blue-100 hover:text-oratalesedi-blue dark:hover:text-white transition-all duration-300 py-2 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-oratalesedi-blue focus-visible:ring-offset-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                if (item.name === "Services") {
+                  return (
+                    <div key="Services" className="space-y-2">
+                      <button
+                        className="w-full text-left font-bold text-lg text-oratalesedi-black dark:text-blue-100 hover:text-oratalesedi-blue dark:hover:text-white transition-all duration-300 py-2 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-oratalesedi-blue focus-visible:ring-offset-2"
+                        onClick={() => setServicesOpen(!servicesOpen)}
+                      >
+                        Services
+                      </button>
+                      {servicesOpen && (
+                        <div className="ml-4 space-y-2 bg-blue-50 dark:bg-blue-900/50 rounded-lg p-2">
+                          <a
+                            href="/services/mining"
+                            className="block w-full text-left px-4 py-3 text-oratalesedi-black dark:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800 active:bg-blue-200 dark:active:bg-blue-700 rounded-lg transition-all duration-200 touch-manipulation"
+                            onClick={() => {
+                              console.log("Navigating to /services/mining");
+                              setServicesOpen(false);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            Mining Services
+                          </a>
+                          <a
+                            href="/services/construction"
+                            className="block w-full text-left px-4 py-3 text-oratalesedi-black dark:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800 active:bg-blue-200 dark:active:bg-blue-700 rounded-lg transition-all duration-200 touch-manipulation"
+                            onClick={() => {
+                              console.log("Navigating to /services/construction");
+                              setServicesOpen(false);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            Construction Services
+                          </a>
+                          <a
+                            href="/services/renewable-energy"
+                            className="block w-full text-left px-4 py-3 text-oratalesedi-black dark:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800 active:bg-blue-200 dark:active:bg-blue-700 rounded-lg transition-all duration-200 touch-manipulation"
+                            onClick={() => {
+                              console.log("Navigating to /services/renewable-energy");
+                              setServicesOpen(false);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            Renewable Energy
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  );
+                } else {
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="font-bold text-lg text-oratalesedi-black dark:text-blue-100 hover:text-oratalesedi-blue dark:hover:text-white transition-all duration-300 py-2 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-oratalesedi-blue focus-visible:ring-offset-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                }
+              })}
               <div className="flex flex-col space-y-3 pt-4">
                 <Link href="/quote#quote-form">
                   <Button

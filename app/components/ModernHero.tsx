@@ -2,9 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, Award, Users, Calendar, Zap } from "lucide-react"
+import { ArrowRight, Play, Award, Users, Calendar, Zap, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function ModernHero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -27,6 +33,24 @@ export default function ModernHero() {
       subtitle: "Advanced Technology Integration",
       description: "Transforming industries with cutting-edge technology and sustainable engineering practices.",
       image: "/placeholder.svg?height=600&width=800",
+    },
+  ]
+
+  const services = [
+    {
+      name: "Mining Services",
+      href: "/services/mining",
+      description: "Comprehensive mining solutions and maintenance",
+    },
+    {
+      name: "Construction Services",
+      href: "/services/construction",
+      description: "Civil engineering and construction projects",
+    },
+    {
+      name: "Renewable Energy",
+      href: "/services/renewable-energy",
+      description: "Solar and sustainable energy solutions",
     },
   ]
 
@@ -61,7 +85,7 @@ export default function ModernHero() {
       <div
         className="absolute bottom-0 left-0 w-full h-48 hidden dark:block pointer-events-none"
         style={{
-          background: 'linear-gradient(to top,rgb(21, 34, 77) 15%, rgba(23,36,79,0) 50%)'
+          background: 'linear-gradient(to top,rgb(22, 37, 84) 15%, rgba(23,36,79,0) 50%)'
         }}
       ></div>
       <div className="container mx-auto px-4 relative z-10">
@@ -90,15 +114,34 @@ export default function ModernHero() {
             </div>
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/services">
-                <Button
-                  size="lg"
-                  className="group bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600"
-                >
-                  Explore Our Services
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    size="lg"
+                    className="group bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600"
+                  >
+                    Explore Our Services
+                    <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform duration-300" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-80 bg-white dark:bg-blue-950 border border-gray-200 dark:border-blue-800 shadow-xl rounded-xl">
+                  {services.map((service, index) => (
+                    <DropdownMenuItem key={index} asChild>
+                      <Link
+                        href={service.href}
+                        className="flex flex-col items-center text-center p-4 hover:bg-blue-50 dark:hover:bg-blue-900/50 rounded-lg transition-colors duration-200 cursor-pointer"
+                      >
+                        <div className="font-semibold text-black dark:text-white mb-1">
+                          {service.name}
+                        </div>
+                        <div className="text-sm text-gray-600 dark:text-blue-200">
+                          {service.description}
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Button
                 size="lg"
                 variant="outline"
@@ -112,7 +155,7 @@ export default function ModernHero() {
             <div className="grid grid-cols-3 gap-8 pt-8">
               {[
                 { icon: Calendar, value: "12+", label: "Years" },
-                { icon: Award, value: "56+", label: "Projects" },
+                { icon: Award, value: "150+", label: "Projects" },
                 { icon: Users, value: "80+", label: "Team" },
               ].map((stat, index) => (
                 <div key={index} className="text-center group">

@@ -12,10 +12,9 @@ export default function RenewableEnergy() {
         <div className="relative w-full h-[400px] flex items-center justify-center mb-8">
           <img src="/images/oratalesedi-hero-img.jpg" alt="Renewable Energy Banner" className="absolute inset-0 w-full h-full object-cover object-center" />
           {/* Overlay for both modes */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 dark:from-black/60 dark:via-blue-950/60 dark:to-blue-950/80 transition-colors" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/20 to-black/50 dark:from-black/60 dark:via-blue-950/60 dark:to-blue-950/80 transition-colors" />
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-            <h1 className="text-5xl font-black text-center mt-10 drop-shadow-lg text-blue-950 dark:text-white">Renewable Energy</h1>
-            <div className="text-center text-gray-700 dark:text-gray-300 mb-4">Home / Renewable Energy</div>
+            <h1 className="text-5xl font-black text-center mt-10 drop-shadow-lg text-white dark:text-white">Renewable Energy</h1>
           </div>
         </div>
         <div className="max-w-6xl mx-auto px-4">

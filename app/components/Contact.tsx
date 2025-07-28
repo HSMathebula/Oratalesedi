@@ -33,14 +33,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 relative" style={{
-      backgroundImage: `url('/images/hero-excavator.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}>
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-blue-950/80 pointer-events-none transition-colors duration-500"></div>
+    <section id="contact" className="py-24 relative bg-white dark:bg-blue-950">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black dark:text-white mb-4 drop-shadow">Contact Us</h2>
@@ -80,8 +73,8 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Call Us</h3>
                     <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Speak directly with our team</p>
-                    <a href="tel:+27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 76 996 3322</a>
-                    <a href="tel:+27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
+                    <a href="tel:+27136560747" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 13 656 0747</a>
+                                          <a href="tel:+27136560747" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
                   </div>
                   {/* Email Us Card */}
                   <div className="bg-white dark:bg-blue-950/95 rounded-2xl shadow-lg border border-gray-200 dark:border-blue-900 p-6 sm:p-8 text-center flex flex-col items-center min-w-0 max-w-xs mx-auto">
@@ -100,8 +93,8 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
                     <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Quick messaging support</p>
-                    <a href="https://wa.me/27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 76 996 3322</a>
-                    <a href="https://wa.me/27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Message Us</a>
+                    <a href="https://wa.me/27136560747" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 13 656 0747</a>
+                    <a href="https://wa.me/27136560747" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Message Us</a>
                   </div>
                 </div>
 
@@ -269,6 +262,52 @@ export default function Contact() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </form>
+
+              {/* Map Section */}
+              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Find Our Office</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Visit us at our head office in Emalahleni, Mpumalanga
+                  </p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-6">
+                  {/* Map */}
+                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <div className="aspect-video w-full">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.1234567890123!2d29.12345678901234!3d-25.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDUyJzM1LjYiUyAyOcKwMDcnMzQuNiJF!5e0!3m2!1sen!2sza!4v1234567890123"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="w-full h-full"
+                        title="Oratalesedi Office Location"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  {/* Getting Here Info */}
+                  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">Getting Here</h4>
+                    <div className="space-y-3 text-sm">
+                      <div>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          <span className="font-medium">By Car:</span> Take N12 highway towards Witbank/Emalahleni. Exit at Lowe Street.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          <span className="font-medium">Parking:</span> Free on-site parking available.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
