@@ -112,7 +112,7 @@ export default function ModernHero() {
             <div className="grid grid-cols-3 gap-8 pt-8">
               {[
                 { icon: Calendar, value: "12+", label: "Years" },
-                { icon: Award, value: "56+", label: "Projects" },
+                { icon: Award, value: "150+", label: "Projects" },
                 { icon: Users, value: "80+", label: "Team" },
               ].map((stat, index) => (
                 <div key={index} className="text-center group">

@@ -37,14 +37,14 @@ export default function ContactPage() {
     {
       name: "Head Office - Emalahleni",
       address: "16 Lowe Street, Fransville, Emalahleni 1035, Mpumalanga Province, South Africa",
-      phone: "+27 76 996 3322",
+      phone: "+27 13 656 0747",
       email: "info@oratalesedi.co.za",
       type: "primary",
     },
     {
       name: "Middelburg Office",
       address: "Mining District, Middelburg, Mpumalanga Province, South Africa",
-      phone: "+27 76 996 3322",
+      phone: "+27 13 656 0747",
       email: "middelburg@oratalesedi.co.za",
       type: "secondary",
     },
@@ -55,7 +55,7 @@ export default function ContactPage() {
       icon: Phone,
       title: "Call Us",
       description: "Speak directly with our team",
-      contact: "+27 76 996 3322",
+      contact: "+27 13 656 0747",
       action: "Call Now",
     },
     {
@@ -69,7 +69,7 @@ export default function ContactPage() {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Quick messaging support",
-      contact: "+27 76 996 3322",
+      contact: "+27 13 656 0747",
       action: "Message Us",
     },
   ]
@@ -202,11 +202,11 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-gray-700 dark:text-blue-200">Monday - Friday:</span>
-                      <span className="font-semibold text-black dark:text-white">8:00 AM - 5:00 PM</span>
+                      <span className="font-semibold text-black dark:text-white">08:00 - 17:00</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-700 dark:text-blue-200">Saturday:</span>
-                      <span className="font-semibold text-black dark:text-white">8:00 AM - 1:00 PM</span>
+                      <span className="font-semibold text-black dark:text-white">Closed</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-700 dark:text-blue-200">Sunday:</span>
@@ -320,7 +320,7 @@ Address: 16 Lowe Street, Fransville, Emalahleni 1035, Mpumalanga Province, South
 Please contact us to confirm the meeting time.
 
 Contact: info@oratalesedi.co.za
-Phone: +27 76 996 3322`);
+Phone: +27 13 656 0747`);
                               const startDate = new Date();
                               startDate.setDate(startDate.getDate() + 1); // Tomorrow
                               const endDate = new Date(startDate);

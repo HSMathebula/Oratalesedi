@@ -82,14 +82,7 @@ export default function ModernServices() {
   }
 
   return (
-    <section id="services" className="py-24 relative" style={{
-      backgroundImage: `url('/images/hero-excavator.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}>
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-blue-950/80 pointer-events-none transition-colors duration-500"></div>
+    <section id="services" className="py-24 relative bg-white dark:bg-blue-950">
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">

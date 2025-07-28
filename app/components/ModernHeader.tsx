@@ -57,7 +57,7 @@ export default function ModernHeader() {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span className="font-medium">+27 76 996 3322</span>
+              <span className="font-medium">+27 13 656 0747</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
