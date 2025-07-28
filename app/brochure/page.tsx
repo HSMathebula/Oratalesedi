@@ -86,13 +86,15 @@ export default function BrochurePage() {
 
           {/* Download CTA */}
           <div className="text-center mb-16">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-bold"
-            >
-              <Download className="mr-3 h-6 w-6" />
-              Download Company Brochure (PDF)
-            </Button>
+            <a href="/company-brochure.pdf.pdf" download>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-bold"
+              >
+                <Download className="mr-3 h-6 w-6" />
+                Download Company Brochure (PDF)
+              </Button>
+            </a>
             <p className="text-sm text-gray-600 dark:text-blue-300 mt-3">Free download • No registration required • 2.5MB PDF</p>
           </div>
         </div>
@@ -322,13 +324,15 @@ export default function BrochurePage() {
               <div className="bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light rounded-3xl p-10 text-white">
                 <h3 className="text-3xl font-bold mb-4">Ready to Download?</h3>
                 <p className="text-xl mb-8 opacity-90">Get instant access to our comprehensive company brochure</p>
-                <Button
-                  size="lg"
-                  className="bg-white dark:bg-blue-950/90 text-oratalesedi-blue dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-blue-900 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-bold"
-                >
-                  <Download className="mr-3 h-6 w-6" />
-                  Download Now (PDF - 2.5MB)
-                </Button>
+                <a href="/company-brochure.pdf.pdf" download>
+                  <Button
+                    size="lg"
+                    className="bg-white dark:bg-blue-950/90 text-oratalesedi-blue dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-blue-900 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-bold"
+                  >
+                    <Download className="mr-3 h-6 w-6" />
+                    Download Now (PDF - 2.5MB)
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
