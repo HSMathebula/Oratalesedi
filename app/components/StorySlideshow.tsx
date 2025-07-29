@@ -1,0 +1,334 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { X, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+
+interface StorySlideshowProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true)
+  const [backgroundMusic, setBackgroundMusic] = useState<HTMLAudioElement | null>(null)
+
+  // Background music functionality
+  const startBackgroundMusic = () => {
+    if (!isSoundEnabled) return
+    
+    const music = new Audio()
+    // Using a more enjoyable ambient/inspirational music
+    music.src = 'https://www.soundjay.com/misc/sounds/ambient-music-1.mp3'
+    music.volume = 0.4
+    music.loop = true
+    
+    music.play().catch(() => {
+      // If external music fails, create a more enjoyable beat pattern using Web Audio API
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+      
+      // Create a more complex and enjoyable rhythm
+      const createBeat = () => {
+        const oscillator = audioContext.createOscillator()
+        const gainNode = audioContext.createGain()
+        
+        oscillator.connect(gainNode)
+        gainNode.connect(audioContext.destination)
+        
+        // Create a pleasant melody pattern
+        const frequencies = [220, 330, 440, 330, 220, 330, 440, 550]
+        const duration = 0.3
+        
+        frequencies.forEach((freq, index) => {
+          const startTime = audioContext.currentTime + (index * duration)
+          oscillator.frequency.setValueAtTime(freq, startTime)
+          gainNode.gain.setValueAtTime(0.15, startTime)
+          gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration)
+        })
+        
+        oscillator.start(audioContext.currentTime)
+        oscillator.stop(audioContext.currentTime + (frequencies.length * duration))
+        
+        // Loop the pattern
+        setTimeout(createBeat, frequencies.length * duration * 1000)
+      }
+      
+      createBeat()
+      setBackgroundMusic(music)
+    })
+    
+    setBackgroundMusic(music)
+  }
+  
+  const stopBackgroundMusic = () => {
+    if (backgroundMusic) {
+      backgroundMusic.pause()
+      backgroundMusic.currentTime = 0
+      setBackgroundMusic(null)
+    }
+  }
+
+  // All images except logos
+  const images = [
+    "/images/Show2.jpeg",
+    "/images/show3.jpeg",
+    "/images/show1.jpeg",
+    "/images/B.jpeg",
+    "/images/G.jpeg",
+    "/images/container.jpg",
+    "/images/ground.jpg",
+    "/images/solar.jpg",
+    "/images/grid battery.jpg",
+    "/images/HDEP.jpg",
+    "/images/maintenance.jpg",
+    "/images/welding.jpg",
+    "/images/maintainence.jpg",
+    "/images/Geospatial.jpg",
+    "/images/converyor belt.jpg",
+    "/images/oratalesedi-hero-img.jpg",
+    "/images/oratalesedi-logo.png",
+    "/images/oratalesedi-header-logo.png",
+    // WhatsApp images
+    "/images/WhatsApp Image 2025-06-04 at 15.34.41.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.24.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.24 (2).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.24 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.23.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.23 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.22.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.22 (2).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.22 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.21.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.21 (2).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.21 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.20.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.20 (2).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.20 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.19.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.19 (2).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.19 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.33.18.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.25.41.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.24.57.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.24.04.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.24.04 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.22.08.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.21.41.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.20.51.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.20.16.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.20.03.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.18.13.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.17.51.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.15.01.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.12.22.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.09.17.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.08.46.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.06.50.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.05.58.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.03.37.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.01.38.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 15.00.05.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.58.22.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.55.38.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.53.41.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.53.22.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.51.19.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.50.32.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.50.32 (1).jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.49.45.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.49.44.jpeg",
+    "/images/WhatsApp Image 2025-06-04 at 14.49.44 (1).jpeg",
+  ]
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentImageIndex(0)
+      setIsPlaying(true)
+      startBackgroundMusic()
+    } else {
+      stopBackgroundMusic()
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isPlaying || !isOpen) return
+
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length)
+    }, 3000)
+
+    return () => clearInterval(timer)
+  }, [isPlaying, isOpen, images.length])
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  }
+
+  const previousImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!isOpen) return
+    
+    switch (e.key) {
+      case "ArrowLeft":
+        previousImage()
+        break
+      case "ArrowRight":
+        nextImage()
+        break
+      case "Escape":
+        onClose()
+        break
+      case " ":
+        e.preventDefault()
+        setIsPlaying(!isPlaying)
+        break
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [isOpen, isPlaying])
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-0">
+        <DialogTitle className="sr-only">Our Story Slideshow</DialogTitle>
+        <div className="relative w-full h-full flex flex-col">
+                     {/* Header */}
+           <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-gradient-to-b from-black/80 to-transparent">
+             <div className="flex items-center space-x-4">
+               <h2 className="text-2xl font-bold text-white drop-shadow-lg">
+                 Our Story
+               </h2>
+               <div className="flex items-center space-x-2">
+                                   <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setIsPlaying(!isPlaying)
+                    }}
+                    className="text-white hover:bg-white/20"
+                  >
+                    {isPlaying ? (
+                      <Pause className="h-5 w-5" />
+                    ) : (
+                      <Play className="h-5 w-5" />
+                    )}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setIsSoundEnabled(!isSoundEnabled)
+                      if (isSoundEnabled) {
+                        stopBackgroundMusic()
+                      } else {
+                        startBackgroundMusic()
+                      }
+                    }}
+                    className="text-white hover:bg-white/20"
+                  >
+                    {isSoundEnabled ? (
+                      <Volume2 className="h-5 w-5" />
+                    ) : (
+                      <VolumeX className="h-5 w-5" />
+                    )}
+                  </Button>
+                 <span className="text-white/80 text-sm">
+                   {currentImageIndex + 1} / {images.length}
+                 </span>
+               </div>
+             </div>
+                           <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClose}
+                className="text-white hover:bg-white/20"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+           </div>
+
+                     {/* Main Image */}
+           <div className="flex-1 relative flex items-center justify-center">
+             <div className="relative w-full h-full flex items-center justify-center">
+               <div className="w-[800px] h-[600px] relative">
+                 <img
+                   src={images[currentImageIndex]}
+                   alt={`Story image ${currentImageIndex + 1}`}
+                   className="w-full h-full object-cover rounded-lg transition-opacity duration-500"
+                   onLoad={() => setIsLoading(false)}
+                   onError={() => setIsLoading(false)}
+                 />
+                 {isLoading && (
+                   <div className="absolute inset-0 flex items-center justify-center bg-gray-900 rounded-lg">
+                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+                   </div>
+                 )}
+               </div>
+             </div>
+
+                         {/* Navigation Arrows */}
+                           <Button
+                variant="ghost"
+                size="lg"
+                onClick={previousImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300"
+              >
+                <ChevronLeft className="h-8 w-8" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300"
+              >
+                <ChevronRight className="h-8 w-8" />
+              </Button>
+          </div>
+
+                     {/* Thumbnail Navigation */}
+           <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+             <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+               {images.map((image, index) => (
+                                   <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? "border-white scale-110"
+                        : "border-white/30 hover:border-white/60"
+                    }`}
+                  >
+                   <img
+                     src={image}
+                     alt={`Thumbnail ${index + 1}`}
+                     className="w-full h-full object-cover"
+                   />
+                 </button>
+               ))}
+             </div>
+           </div>
+
+          {/* Progress Bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+            <div
+              className="h-full bg-white transition-all duration-300 ease-linear"
+              style={{
+                width: `${((currentImageIndex + 1) / images.length) * 100}%`,
+              }}
+            />
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+} 
