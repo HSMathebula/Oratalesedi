@@ -10,7 +10,7 @@ export default function Construction() {
       <main className="min-h-screen bg-blue-50 dark:bg-blue-950 text-blue-950 dark:text-white pb-2">
         {/* Banner */}
         <div className="relative w-full h-[400px] flex items-center justify-center mb-8">
-          <img src="/images/oratalesedi-hero-img.jpg" alt="Construction Banner" className="absolute inset-0 w-full h-full object-cover object-center" />
+          <img src="/images/show3.jpg" alt="Construction Banner" className="absolute inset-0 w-full h-full object-cover object-center" />
           {/* Overlay for both modes */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/20 to-black/50 dark:from-black/60 dark:via-blue-950/60 dark:to-blue-950/80 transition-colors" />
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
@@ -23,7 +23,7 @@ export default function Construction() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Row 1 */}
-            <img src="/images/WhatsApp Image 2025-06-04 at 15.33.24 (2).jpeg" alt="Modular Construction" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/maintenance.jpg" alt="Modular Construction" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Civil Works</h2>
               <p>Site Preparation: Clearing, leveling, and grading of construction sites<br />
@@ -32,7 +32,7 @@ export default function Construction() {
               Site Utilities: Installation of water, sewer, and storm drainage systems<br />
               Road Construction: Building roads, highways, and other transportation infrastructure</p>
             </div>
-            <img src="/images/WhatsApp Image 2025-06-04 at 15.33.24.jpeg" alt="Construction Work" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/Geospatial.jpg" alt="Construction Work" className="object-cover w-full h-64 rounded-xl" />
 
             {/* Row 2 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
@@ -42,7 +42,7 @@ export default function Construction() {
               Institutional Construction: Building schools, hospitals, and government buildings<br />
               Renovations and Remodels: Updating and modernizing existing buildings</p>
             </div>
-            <img src="/images/B.jpeg" alt="Building Construction" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/whatsApp Image 2025-06-04 at 14.49.44 (1).jpeg" alt="Building Construction" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Infrastructure Development</h2>
               <p>Bridges and Tunnels: Designing and constructing bridges and tunnels<br />
