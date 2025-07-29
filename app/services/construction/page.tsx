@@ -19,11 +19,11 @@ export default function Construction() {
         </div>
         <div className="max-w-6xl mx-auto px-4">
           <p className="text-center text-lg max-w-3xl mx-auto mb-12">
-            Our team of skilled professionals is dedicated to delivering high-quality projects on time and within budget. We specialize in a list of construction services, such as civil works, building construction, and infrastructure development. With a strong focus on safety, sustainability, and innovation, we strive to exceed our clients’ expectations and contribute to the growth and development of the construction sector.
+            Our team of skilled professionals is dedicated to delivering high-quality projects on time and within budget. We specialize in a list of construction services, such as civil works, building construction, and infrastructure development. With a strong focus on safety, sustainability, and innovation, we strive to exceed our clients' expectations and contribute to the growth and development of the construction sector.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Row 1 */}
-            <img src="/images/construction1.jpg" alt="Civil Works" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/whatsApp Image 2025-06-04 at 14.53.22.jpeg" alt="Modular Construction" className="object-cover w-full h-full rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Civil Works</h2>
               <p>Site Preparation: Clearing, leveling, and grading of construction sites<br />
@@ -32,7 +32,7 @@ export default function Construction() {
               Site Utilities: Installation of water, sewer, and storm drainage systems<br />
               Road Construction: Building roads, highways, and other transportation infrastructure</p>
             </div>
-            <img src="/images/construction2.jpg" alt="Civil Works 2" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/whatsApp Image 2025-06-04 at 15.18.13.jpeg" alt="Construction Work" className="object-cover w-full h-full rounded-xl" />
 
             {/* Row 2 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
@@ -42,7 +42,7 @@ export default function Construction() {
               Institutional Construction: Building schools, hospitals, and government buildings<br />
               Renovations and Remodels: Updating and modernizing existing buildings</p>
             </div>
-            <img src="/images/construction3.jpg" alt="Building Construction" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/whatsApp Image 2025-06-04 at 14.49.44 (1).jpeg" alt="Building Construction" className="object-cover w-full h-full rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Infrastructure Development</h2>
               <p>Bridges and Tunnels: Designing and constructing bridges and tunnels<br />
