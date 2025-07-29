@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { X, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
@@ -14,63 +14,8 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
-  const [isSoundEnabled, setIsSoundEnabled] = useState(true)
-  const [backgroundMusic, setBackgroundMusic] = useState<HTMLAudioElement | null>(null)
 
-  // Background music functionality
-  const startBackgroundMusic = () => {
-    if (!isSoundEnabled) return
-    
-    const music = new Audio()
-    // Using a more enjoyable ambient/inspirational music
-    music.src = 'https://www.soundjay.com/misc/sounds/ambient-music-1.mp3'
-    music.volume = 0.4
-    music.loop = true
-    
-    music.play().catch(() => {
-      // If external music fails, create a more enjoyable beat pattern using Web Audio API
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
-      
-      // Create a more complex and enjoyable rhythm
-      const createBeat = () => {
-        const oscillator = audioContext.createOscillator()
-        const gainNode = audioContext.createGain()
-        
-        oscillator.connect(gainNode)
-        gainNode.connect(audioContext.destination)
-        
-        // Create a pleasant melody pattern
-        const frequencies = [220, 330, 440, 330, 220, 330, 440, 550]
-        const duration = 0.3
-        
-        frequencies.forEach((freq, index) => {
-          const startTime = audioContext.currentTime + (index * duration)
-          oscillator.frequency.setValueAtTime(freq, startTime)
-          gainNode.gain.setValueAtTime(0.15, startTime)
-          gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration)
-        })
-        
-        oscillator.start(audioContext.currentTime)
-        oscillator.stop(audioContext.currentTime + (frequencies.length * duration))
-        
-        // Loop the pattern
-        setTimeout(createBeat, frequencies.length * duration * 1000)
-      }
-      
-      createBeat()
-      setBackgroundMusic(music)
-    })
-    
-    setBackgroundMusic(music)
-  }
-  
-  const stopBackgroundMusic = () => {
-    if (backgroundMusic) {
-      backgroundMusic.pause()
-      backgroundMusic.currentTime = 0
-      setBackgroundMusic(null)
-    }
-  }
+
 
   // All images except logos
   const images = [
@@ -148,9 +93,6 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
     if (isOpen) {
       setCurrentImageIndex(0)
       setIsPlaying(true)
-      startBackgroundMusic()
-    } else {
-      stopBackgroundMusic()
     }
   }, [isOpen])
 
@@ -208,8 +150,8 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
                <h2 className="text-2xl font-bold text-white drop-shadow-lg">
                  Our Story
                </h2>
-               <div className="flex items-center space-x-2">
-                                   <Button
+                               <div className="flex items-center space-x-2">
+                  <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => {
@@ -221,25 +163,6 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
                       <Pause className="h-5 w-5" />
                     ) : (
                       <Play className="h-5 w-5" />
-                    )}
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => {
-                      setIsSoundEnabled(!isSoundEnabled)
-                      if (isSoundEnabled) {
-                        stopBackgroundMusic()
-                      } else {
-                        startBackgroundMusic()
-                      }
-                    }}
-                    className="text-white hover:bg-white/20"
-                  >
-                    {isSoundEnabled ? (
-                      <Volume2 className="h-5 w-5" />
-                    ) : (
-                      <VolumeX className="h-5 w-5" />
                     )}
                   </Button>
                  <span className="text-white/80 text-sm">
