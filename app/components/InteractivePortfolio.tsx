@@ -188,29 +188,27 @@ export default function InteractivePortfolio() {
 
         {/* Animated Client Logos */}
         <ScrollReveal direction="up" delay={800}>
-          <div className="bg-white dark:bg-blue-950/90 rounded-3xl p-10 shadow-xl border border-gray-100 dark:border-blue-900">
-            <div className="text-center mb-10">
-              <h3 className="text-3xl font-bold text-black dark:text-white mb-4 drop-shadow">Trusted by Industry Leaders</h3>
-              <p className="text-black dark:text-blue-100 text-lg drop-shadow">
-                We are proud to work with some of the most respected names in the mining industry.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-              {clientLogos.map((client, index) => (
-                <div
-                  key={index}
-                  className="text-center p-6 border border-gray-200 dark:border-blue-800 rounded-xl hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-400 transition-all duration-500 transform hover:scale-105 group cursor-pointer"
-                >
-                  <div className="h-20 bg-white dark:bg-blue-950/90 rounded-lg mb-3 flex items-center justify-center group-hover:from-blue-50 group-hover:to-blue-100 dark:group-hover:from-blue-900 dark:group-hover:to-blue-800 transition-all duration-300">
-                    <span className="text-sm text-black dark:text-blue-100 font-bold group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300 drop-shadow">
-                      {client}
-                    </span>
-                  </div>
+          {/* Trusted by Industry Leaders Section */}
+          <section className="py-20 bg-blue-950 dark:bg-blue-900">
+            <div className="max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold text-center mb-4 text-white">Trusted by Industry Leaders</h2>
+              <p className="text-center text-lg mb-8 text-blue-100">We are proud to work with some of the most respected names in the mining industry.</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/AngloAmerican_White-Maurice-Rankin.png" alt="Anglo American" className="h-16 object-contain" />
                 </div>
-              ))}
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/kms.png" alt="Eskom Trial" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/cat.png" alt="Caterpillar" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/EXX.JO_BIG.D-f5d2dc08.png" alt="JEDD Civils" className="h-16 object-contain" />
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
         </ScrollReveal>
 
         {/* Enhanced Portfolio Summary */}
