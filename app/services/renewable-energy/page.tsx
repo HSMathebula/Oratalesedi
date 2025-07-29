@@ -23,38 +23,38 @@ export default function RenewableEnergy() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Row 1 */}
-            <img src="/images/renewable1.jpg" alt="Solar Panel Installations" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/grid battery.jpg" alt="Solar Panel Array" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Solar Panel Installations</h2>
               <p>Grid-tied Solar PV solutions<br />Solar Panel supplies</p>
             </div>
-            <img src="/images/renewable2.jpg" alt="Grid Solar" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/solar.jpg" alt="Large Scale Solar Farm" className="object-cover w-full h-64 rounded-xl" />
 
             {/* Row 2 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Battery Storage Installations</h2>
               <p>Battery backup and grid-tied solutions<br />ESS supplies</p>
             </div>
-            <img src="/images/renewable3.jpg" alt="Ground Mount Structures" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/HDEP.jpg" alt="Battery Storage" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Ground Mount Structures</h2>
               <p>cost-effective alternative, where roof space isn't sufficient in large-scale solar plants<br />Foundation drilling and post ramming</p>
             </div>
 
             {/* Row 3 */}
-            <img src="/images/renewable4.jpg" alt="Shaded Parking" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/show1.jpeg" alt="Solar Carport Structure" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Shaded Parking</h2>
               <p>unique combination of shading and a power producing structures customized to the clients' requirements</p>
             </div>
-            <img src="/images/renewable5.jpg" alt="Containerised Solutions" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/container.jpg" alt="Containerised Energy Unit" className="object-cover w-full h-64 rounded-xl" />
 
             {/* Row 4 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Containerised Solutions</h2>
               <p>battery storage solutions can be customised and portable, ideal for remote areas or limited time-frame projects requiring energy solutions.</p>
             </div>
-            <img src="/images/renewable6.jpg" alt="Inspections and Maintenance" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/ground.jpg" alt="Energy Infrastructure Installation" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Inspections and Maintenance</h2>
               <p>We offer assessments, suggesting new energy installation solutions or identifying ways of optimising existing renewable energy set-ups. We monitor and maintain systems in order to get maximum return on your renewable energy investment</p>
