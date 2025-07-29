@@ -35,7 +35,7 @@ export default function RenewableEnergy() {
               <h2 className="text-2xl font-bold mb-2">Battery Storage Installations</h2>
               <p>Battery backup and grid-tied solutions<br />ESS supplies</p>
             </div>
-            <img src="/images/HDEP.jpg" alt="Battery Storage" className="object-cover w-full h-64 rounded-xl" />
+            <img src="/images/whatsApp Image 2025-06-04 at 15.33.21 (1).jpeg" alt="Battery Storage" className="object-cover w-full h-64 rounded-xl" />
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Ground Mount Structures</h2>
               <p>cost-effective alternative, where roof space isn't sufficient in large-scale solar plants<br />Foundation drilling and post ramming</p>
