@@ -2,6 +2,7 @@ import React from "react";
 import ModernHeader from "../../components/ModernHeader";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MiningServices() {
   return (
@@ -10,7 +11,13 @@ export default function MiningServices() {
       <main className="min-h-screen bg-blue-50 dark:bg-blue-950 text-blue-950 dark:text-white pb-2">
         {/* Banner */}
         <div className="relative w-full h-[400px] flex items-center justify-center mb-8">
-          <img src="/images/oratalesedi-hero-img.jpg" alt="Mining Banner" className="absolute inset-0 w-full h-full object-cover object-center" />
+          <Image 
+            src="/images/oratalesedi-hero-img.jpg" 
+            alt="Mining Banner" 
+            fill
+            className="object-cover object-center"
+            priority
+          />
           {/* Overlay for both modes */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/20 to-black/50 dark:from-black/70 dark:via-blue-950/60 dark:to-blue-950/80 transition-colors" />
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
@@ -23,38 +30,50 @@ export default function MiningServices() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Row 1 */}
-            <img src="/images/Geospatial.jpg" alt="Conveyor Belt Cleaning" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/Geospatial.jpg" alt="Conveyor Belt Cleaning" fill className="object-cover" />
+            </div>
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Conveyor Belt Cleaning & Maintenance</h2>
               <p>Our core services include both open cast and underground conveyor belt maintenance and cleaning, including management and supervision.</p>
             </div>
-            <img src="/images/maintenance.jpg" alt="General Building Maintenance" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/maintenance.jpg" alt="General Building Maintenance" fill className="object-cover" />
+            </div>
 
             {/* Row 2 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Geospatial & Surveying Services</h2>
               <p>Through our extensive partnership model, we offer specialized geospatial and surveying services such as: 3D Terrestrial, UAV LiDAR Scanning and 3D Modelling, Drone Thermal Aerial Imaging, Engineering & Construction Survey, Bathymetric Surveys, Underground Utility Mapping, Cadastral Survey as well as Geospatial Intelligence and Geographic Information System.</p>
             </div>
-            <img src="/images/converyor belt.jpg" alt="Surveying" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/converyor belt.jpg" alt="Surveying" fill className="object-cover" />
+            </div>
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">General Building Maintenance</h2>
               <p>As part of planned and unplanned maintenance, we offer general building maintenance services for existing buildings and mining infrastructure.</p>
             </div>
 
             {/* Row 3 */}
-            <img src="/images/welding.jpg" alt="Welding" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/welding.jpg" alt="Welding" fill className="object-cover" />
+            </div>
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Welding, Fabrications, Repairs & Installation</h2>
               <p>We provide state-of-the-art technology to provide forward-thinking welding engineering solutions for fabricating or joining any metal infrastructure, all executed to world-class quality control, safety and assurance standards.</p>
             </div>
-            <img src="/images/maintainence.jpg" alt="Construction" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/maintainence.jpg" alt="Construction" fill className="object-cover" />
+            </div>
 
             {/* Row 4 */}
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">Shutdown & Maintenance Works</h2>
               <p>Our experienced team of qualified artisans are key to delivering plant shutdown, repairs and maintenance services. We ensure the minimum reduced downtime and overtime, whilst swiftly getting the plant up-to-speed for maximum operational efficiency, at minimal cost.</p>
             </div>
-            <img src="/images/HDEP.jpg" alt="HDPE piping" className="object-cover w-full h-full rounded-xl" />
+            <div className="relative h-64 rounded-xl overflow-hidden">
+              <Image src="/images/HDEP.jpg" alt="HDPE piping" fill className="object-cover" />
+            </div>
             <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
               <h2 className="text-2xl font-bold mb-2">HDPE piping & Installation</h2>
               <p>We offer plastic welding: heat sealing, extrusion welding, spin welding, vibration welding as well as laser welding.</p>
