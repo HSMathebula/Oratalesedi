@@ -43,7 +43,6 @@ const createContactEmailTemplate = (formData: any) => {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <!-- Header with logo -->
         <div style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 30px; text-align: center;">
-          <img src="https://oratalesedi.co.za/placeholder-logo.png" alt="Oratalesedi Logo" style="height: 60px; margin-bottom: 10px;" />
           <h1 style="margin: 0; font-size: 28px;">New Contact Message</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9;">Oratalesedi Website Contact Form</p>
         </div>
@@ -85,7 +84,6 @@ const createContactEmailTemplate = (formData: any) => {
 
         <!-- Footer with logo -->
         <div style="background: #1f2937; color: white; padding: 20px; text-align: center;">
-          <img src="https://oratalesedi.co.za/placeholder-logo.png" alt="Oratalesedi Logo" style="height: 40px; margin-bottom: 10px;" />
           <p style="margin: 0; font-size: 14px; opacity: 0.8;">
             This email was sent from the Oratalesedi website contact form.<br>
             Submitted on ${new Date().toLocaleString('en-ZA', { 
