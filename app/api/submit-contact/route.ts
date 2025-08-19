@@ -38,14 +38,15 @@ const createContactEmailTemplate = (formData: any) => {
   }
 
   return {
-    subject: `New Contact Form Submission - ${serviceTypes[formData.service as keyof typeof serviceTypes] || 'General Inquiry'}`,
+    subject: `Contact Request: ${serviceTypes[formData.service as keyof typeof serviceTypes] || 'General Inquiry'} from ${formData.name}${formData.company ? ' (' + formData.company + ')' : ''}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <!-- Header with logo -->
         <div style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 30px; text-align: center;">
+          <img src="https://oratalesedi.co.za/placeholder-logo.png" alt="Oratalesedi Logo" style="height: 60px; margin-bottom: 10px;" />
           <h1 style="margin: 0; font-size: 28px;">New Contact Message</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9;">Oratalesedi Website Contact Form</p>
         </div>
-        
         <div style="padding: 30px; background: #f8fafc;">
           <h2 style="color: #1e40af; margin-bottom: 20px;">Contact Information</h2>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
@@ -82,7 +83,9 @@ const createContactEmailTemplate = (formData: any) => {
           </div>
         </div>
 
+        <!-- Footer with logo -->
         <div style="background: #1f2937; color: white; padding: 20px; text-align: center;">
+          <img src="https://oratalesedi.co.za/placeholder-logo.png" alt="Oratalesedi Logo" style="height: 40px; margin-bottom: 10px;" />
           <p style="margin: 0; font-size: 14px; opacity: 0.8;">
             This email was sent from the Oratalesedi website contact form.<br>
             Submitted on ${new Date().toLocaleString('en-ZA', { 
@@ -135,8 +138,8 @@ export async function POST(request: NextRequest) {
 
     // Send email
     const mailOptions = {
-      from: process.env.SMTP_LOGIN,
-      to: 'mathebulaaappen8@gmail.com',
+      from: 'info@oratalesedi.co.za', // Use your verified sender email
+      to: 'info@oratalesedi.co.za',   // All form submissions go to this address
       subject: emailContent.subject,
       html: emailContent.html,
       replyTo: validData.email

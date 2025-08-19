@@ -163,8 +163,8 @@ export async function POST(request: NextRequest) {
 
     // Send email
     const mailOptions = {
-      from: process.env.SMTP_LOGIN,
-      to: 'info@oratalesedi.co.za',
+      from: 'info@oratalesedi.co.za', // Use your verified sender email
+      to: 'info@oratalesedi.co.za',   // All form submissions go to this address
       subject: emailContent.subject,
       html: emailContent.html,
       replyTo: validData.email

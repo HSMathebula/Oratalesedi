@@ -26,7 +26,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Contact form submitted:', formData)
-    alert('Form submitted! Check console for details.')
+    // alert('Form submitted! Check console for details.')
     
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
@@ -333,17 +333,6 @@ export default function Contact() {
                 )}
 
                 <div className="space-y-4">
-                  <Button
-                    type="button"
-                    onClick={() => {
-                      console.log('Test button clicked')
-                      alert('Test button works!')
-                    }}
-                    className="w-full bg-red-500 text-white font-bold text-lg py-4 rounded-xl"
-                  >
-                    Test Button (Click Me)
-                  </Button>
-                  
                   <Button
                     type="submit"
                     disabled={isSubmitting}
