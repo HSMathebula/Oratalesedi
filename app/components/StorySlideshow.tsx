@@ -186,7 +186,7 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
                <div className="w-[800px] h-[600px] relative">
                  <img
                    src={images[currentImageIndex]}
-                   alt={`Story image ${currentImageIndex + 1}`}
+                   alt={images[currentImageIndex].includes('oratalesedi') ? 'Oratalesedi project image' : `Story image ${currentImageIndex + 1}`}
                    className="w-full h-full object-cover rounded-lg transition-opacity duration-500"
                    onLoad={() => setIsLoading(false)}
                    onError={() => setIsLoading(false)}
@@ -233,7 +233,7 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
                   >
                    <img
                      src={image}
-                     alt={`Thumbnail ${index + 1}`}
+                     alt={image.includes('oratalesedi') ? 'Oratalesedi thumbnail' : `Thumbnail ${index + 1}`}
                      className="w-full h-full object-cover"
                    />
                  </button>
@@ -254,4 +254,4 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
       </DialogContent>
     </Dialog>
   )
-} 
+}
