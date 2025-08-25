@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react"
-import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Play, Pause, Volume, VolumeX } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
@@ -180,10 +180,16 @@ export default function StorySlideshow({ isOpen, onClose, audioRef: externalAudi
                     onClick={() => {
                       if (!audioRef.current) return
                       audioRef.current.muted = !audioRef.current.muted
+                      setAudioAllowedState(!audioRef.current.muted)
                     }}
                     className="text-white hover:bg-white/20"
+                    aria-label={audioRef.current && audioRef.current.muted ? "Unmute audio" : "Mute audio"}
                   >
-                    {audioRef.current && audioRef.current.muted ? <Play className="h-5 w-5" /> : <Pause className="h-5 w-5" />}
+                    {audioRef.current && audioRef.current.muted ? (
+                      <VolumeX className="h-5 w-5" />
+                    ) : (
+                      <Volume className="h-5 w-5" />
+                    )}
                   </Button>
                 ) : null}
 
