@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
@@ -8,16 +8,19 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 interface StorySlideshowProps {
   isOpen: boolean
   onClose: () => void
+  audioRef?: React.RefObject<HTMLAudioElement | null>
+  audioAllowed?: boolean
 }
 
-export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps) {
+export default function StorySlideshow({ isOpen, onClose, audioRef: externalAudioRef, audioAllowed = true }: StorySlideshowProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
 
+  const localAudioRef = useRef<HTMLAudioElement | null>(null)
+  const audioRef = externalAudioRef ?? localAudioRef
+  const [audioAllowedState, setAudioAllowedState] = useState(audioAllowed)
 
-
-  // All images except logos
   const images = [
     "/images/Show2.jpeg",
     "/images/show3.jpeg",
@@ -106,17 +109,31 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
     return () => clearInterval(timer)
   }, [isPlaying, isOpen, images.length])
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length)
-  }
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
 
-  const previousImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
-  }
+    // ensure audio is unmuted by default; parent can choose otherwise
+    audio.muted = false
+
+    if (isOpen && isPlaying) {
+      const playPromise = audio.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          setAudioAllowedState(false)
+          audio.pause()
+        })
+      }
+    } else {
+      audio.pause()
+    }
+  }, [isOpen, isPlaying, audioRef])
+
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  const previousImage = () => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!isOpen) return
-    
     switch (e.key) {
       case "ArrowLeft":
         previousImage()
@@ -144,111 +161,73 @@ export default function StorySlideshow({ isOpen, onClose }: StorySlideshowProps)
       <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-0">
         <DialogTitle className="sr-only">Our Story Slideshow</DialogTitle>
         <div className="relative w-full h-full flex flex-col">
-                     {/* Header */}
-           <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-gradient-to-b from-black/80 to-transparent">
-             <div className="flex items-center space-x-4">
-               <h2 className="text-2xl font-bold text-white drop-shadow-lg">
-                 Our Story
-               </h2>
-                               <div className="flex items-center space-x-2">
+          {!externalAudioRef && (
+            <audio ref={localAudioRef} src="/Oratalesedi-audio.mp3" loop preload="auto" className="sr-only" aria-hidden={!audioAllowedState} />
+          )}
+
+          <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-gradient-to-b from-black/80 to-transparent">
+            <div className="flex items-center space-x-4">
+              <h2 className="text-2xl font-bold text-white drop-shadow-lg">Our Story</h2>
+              <div className="flex items-center space-x-2">
+                <Button variant="ghost" size="sm" onClick={() => setIsPlaying(!isPlaying)} className="text-white hover:bg-white/20">
+                  {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+                </Button>
+
+                {audioRef.current ? (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => {
-                      setIsPlaying(!isPlaying)
+                      if (!audioRef.current) return
+                      audioRef.current.muted = !audioRef.current.muted
                     }}
                     className="text-white hover:bg-white/20"
                   >
-                    {isPlaying ? (
-                      <Pause className="h-5 w-5" />
-                    ) : (
-                      <Play className="h-5 w-5" />
-                    )}
+                    {audioRef.current && audioRef.current.muted ? <Play className="h-5 w-5" /> : <Pause className="h-5 w-5" />}
                   </Button>
-                 <span className="text-white/80 text-sm">
-                   {currentImageIndex + 1} / {images.length}
-                 </span>
-               </div>
-             </div>
-                           <Button
-                variant="ghost"
-                size="sm"
-                onClick={onClose}
-                className="text-white hover:bg-white/20"
-              >
-                <X className="h-6 w-6" />
-              </Button>
-           </div>
+                ) : null}
 
-                     {/* Main Image */}
-           <div className="flex-1 relative flex items-center justify-center">
-             <div className="relative w-full h-full flex items-center justify-center">
-               <div className="w-[800px] h-[600px] relative">
-                 <img
-                   src={images[currentImageIndex]}
-                   alt={images[currentImageIndex].includes('oratalesedi') ? 'Oratalesedi project image' : `Story image ${currentImageIndex + 1}`}
-                   className="w-full h-full object-cover rounded-lg transition-opacity duration-500"
-                   onLoad={() => setIsLoading(false)}
-                   onError={() => setIsLoading(false)}
-                 />
-                 {isLoading && (
-                   <div className="absolute inset-0 flex items-center justify-center bg-gray-900 rounded-lg">
-                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-                   </div>
-                 )}
-               </div>
-             </div>
+                <span className="text-white/80 text-sm">{currentImageIndex + 1} / {images.length}</span>
+              </div>
+            </div>
 
-                         {/* Navigation Arrows */}
-                           <Button
-                variant="ghost"
-                size="lg"
-                onClick={previousImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300"
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300"
-              >
-                <ChevronRight className="h-8 w-8" />
-              </Button>
+            <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-white/20">
+              <X className="h-6 w-6" />
+            </Button>
           </div>
 
-                     {/* Thumbnail Navigation */}
-           <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-             <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
-               {images.map((image, index) => (
-                                   <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      index === currentImageIndex
-                        ? "border-white scale-110"
-                        : "border-white/30 hover:border-white/60"
-                    }`}
-                  >
-                   <img
-                     src={image}
-                     alt={image.includes('oratalesedi') ? 'Oratalesedi thumbnail' : `Thumbnail ${index + 1}`}
-                     className="w-full h-full object-cover"
-                   />
-                 </button>
-               ))}
-             </div>
-           </div>
+          <div className="flex-1 relative flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div className="w-[800px] h-[600px] relative">
+                <img src={images[currentImageIndex]} alt={images[currentImageIndex].includes("oratalesedi") ? "Oratalesedi project image" : `Story image ${currentImageIndex + 1}`} className="w-full h-full object-cover rounded-lg transition-opacity duration-500" onLoad={() => setIsLoading(false)} onError={() => setIsLoading(false)} />
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-900 rounded-lg">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white" />
+                  </div>
+                )}
+              </div>
+            </div>
 
-          {/* Progress Bar */}
+            <Button variant="ghost" size="lg" onClick={previousImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300">
+              <ChevronLeft className="h-8 w-8" />
+            </Button>
+            <Button variant="ghost" size="lg" onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all duration-300">
+              <ChevronRight className="h-8 w-8" />
+            </Button>
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+            <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+              {images.map((image, index) => (
+                <button key={index} onClick={() => setCurrentImageIndex(index)} className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${index === currentImageIndex ? "border-white scale-110" : "border-white/30 hover:border-white/60"}`}>
+                  <img src={image} alt={image.includes("oratalesedi") ? "Oratalesedi thumbnail" : `Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-            <div
-              className="h-full bg-white transition-all duration-300 ease-linear"
-              style={{
-                width: `${((currentImageIndex + 1) / images.length) * 100}%`,
-              }}
-            />
+            <div className="h-full bg-white transition-all duration-300 ease-linear" style={{ width: `${((currentImageIndex + 1) / images.length) * 100}%` }} />
           </div>
         </div>
       </DialogContent>

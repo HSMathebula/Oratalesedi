@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play, Award, Users, Calendar, Zap, ChevronDown } from "lucide-react"
 import Link from "next/link"
@@ -16,6 +16,8 @@ import StorySlideshow from "./StorySlideshow"
 export default function ModernHero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isSlideshowOpen, setIsSlideshowOpen] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [audioAllowed, setAudioAllowed] = useState(true)
 
   const slides = [
     {
@@ -147,7 +149,18 @@ export default function ModernHero() {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => setIsSlideshowOpen(true)}
+                onClick={async () => {
+                  // Attempt to start audio in the user gesture, then open slideshow
+                  try {
+                    if (audioRef.current) {
+                      await audioRef.current.play()
+                      setAudioAllowed(true)
+                    }
+                  } catch (e) {
+                    setAudioAllowed(false)
+                  }
+                  setIsSlideshowOpen(true)
+                }}
                 className="group border-2 border-oratalesedi-blue dark:border-blue-400 text-oratalesedi-blue dark:text-blue-400 hover:bg-oratalesedi-blue hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 bg-white/90 dark:bg-blue-900/60 focus:outline-2 focus:outline-blue-600"
               >
                 <Play className="mr-2 h-5 w-5" />
@@ -230,7 +243,12 @@ export default function ModernHero() {
       <StorySlideshow 
         isOpen={isSlideshowOpen} 
         onClose={() => setIsSlideshowOpen(false)} 
+        audioRef={audioRef}
+        audioAllowed={audioAllowed}
       />
+
+      {/* Hidden global audio to be started in user gesture */}
+      <audio ref={audioRef} src="/Oratalesedi-audio.mp3" loop preload="auto" className="hidden" />
     </section>
   )
 }
