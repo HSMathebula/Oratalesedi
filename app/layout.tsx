@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description:
     "100% Black Woman Owned Level 1 BBBEE company specializing in mining, construction, and renewable energy services.",
     generator: 'v0.dev'
+  ,
+  icons: {
+    icon: '/oratalesedi-logo-icon.png',
+    shortcut: '/oratalesedi-logo-icon.png',
+    apple: '/oratalesedi-logo-icon.png',
+  },
 }
 
 export default function RootLayout({
