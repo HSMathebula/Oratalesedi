@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://oratalesedi.co.za
+
+# Sitemaps
+Sitemap: https://oratalesedi.co.za/sitemap.xml

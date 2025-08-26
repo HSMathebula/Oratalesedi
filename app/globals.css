@@ -125,6 +125,16 @@ html {
   scrollbar-color: #2563eb #f1f5f9;
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
 /* Focus States */
 input:focus,
 textarea:focus,

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Clock, FileText, MessageSquare, ArrowRight } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, FileText, MessageSquare, ArrowRight, CheckCircle } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -19,10 +19,61 @@ export default function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    console.log('Contact form submitted:', formData)
+    // alert('Form submitted! Check console for details.')
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus('error')
+      setSubmitMessage('Please fill in all required fields (Name, Email, and Message).')
+      return
+    }
+    
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    console.log('Sending request to /api/submit-contact...')
+    
+    try {
+      const response = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const result = await response.json()
+      console.log('Response received:', result)
+      
+      if (result.success) {
+        setSubmitStatus('success')
+        setSubmitMessage('Message sent successfully! We will contact you within 24 hours.')
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          service: "",
+          message: "",
+        })
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(result.message || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Contact form error:', error)
+      setSubmitStatus('error')
+      setSubmitMessage('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -54,13 +105,11 @@ export default function Contact() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-900 dark:text-blue-100 drop-shadow">
-                  16 Lowe Street, Fransville
+                  Business Park,8 Corridor Cres, Ben Fleur
                   <br />
-                  Emalahleni 1035
+                  eMalahleni, 1049
                   <br />
-                  Mpumalanga Province
-                  <br />
-                  South Africa
+                  Mpumalanga, South Africa
                 </p>
               </CardContent>
             </Card>
@@ -73,8 +122,8 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Call Us</h3>
                     <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Speak directly with our team</p>
-                    <a href="tel:+27136560747" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 13 656 0747</a>
-                                          <a href="tel:+27136560747" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
+                    <a href="tel:+27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 76 996 3322</a>
+                                          <a href="tel:+27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
                   </div>
                   {/* Email Us Card */}
                   <div className="bg-white dark:bg-blue-950/95 rounded-2xl shadow-lg border border-gray-200 dark:border-blue-900 p-6 sm:p-8 text-center flex flex-col items-center min-w-0 max-w-xs mx-auto">
@@ -93,8 +142,8 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
                     <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Quick messaging support</p>
-                    <a href="https://wa.me/27136560747" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 13 656 0747</a>
-                    <a href="https://wa.me/27136560747" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Message Us</a>
+                    <a href="https://wa.me/27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 76 996 3322</a>
+                    <a href="https://wa.me/27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Message Us</a>
                   </div>
                 </div>
 
@@ -152,10 +201,10 @@ export default function Contact() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                    <label htmlFor="name" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                       Full Name *
                     </label>
                     <Input
@@ -166,11 +215,13 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Your full name"
-                      className="h-12 text-lg border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300"
+                      className="h-12 sm:h-12 text-lg sm:text-base border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300 px-4 sm:px-3"
+                      autoComplete="name"
+                      inputMode="text"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                    <label htmlFor="email" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                       Email Address *
                     </label>
                     <Input
@@ -181,14 +232,16 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your.email@company.com"
-                      className="h-12 text-lg border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300"
+                      className="h-12 sm:h-12 text-lg sm:text-base border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300 px-4 sm:px-3"
+                      autoComplete="email"
+                      inputMode="email"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                    <label htmlFor="company" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                       Company Name
                     </label>
                     <Input
@@ -198,11 +251,13 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your company name"
-                      className="h-12 text-lg border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300"
+                      className="h-12 sm:h-12 text-lg sm:text-base border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300 px-4 sm:px-3"
+                      autoComplete="organization"
+                      inputMode="text"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                    <label htmlFor="phone" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                       Phone Number
                     </label>
                     <Input
@@ -212,13 +267,15 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+27 XX XXX XXXX"
-                      className="h-12 text-lg border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300"
+                      className="h-12 sm:h-12 text-lg sm:text-base border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300 px-4 sm:px-3"
+                      autoComplete="tel"
+                      inputMode="tel"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                  <label htmlFor="service" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                     Service Interest
                   </label>
                   <select
@@ -226,7 +283,7 @@ export default function Contact() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-oratalesedi-blue h-12 text-lg"
+                    className="w-full px-4 sm:px-3 py-3 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-oratalesedi-blue h-12 sm:h-12 text-lg sm:text-base"
                   >
                     <option value="">Select a service</option>
                     <option value="mechanical">Mechanical Engineering</option>
@@ -239,7 +296,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
+                  <label htmlFor="message" className="block text-base sm:text-sm font-medium text-gray-900 dark:text-blue-100 mb-2 drop-shadow">
                     Message *
                   </label>
                   <Textarea
@@ -250,17 +307,49 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Please describe your project requirements, timeline, and any specific details..."
                     rows={5}
-                    className="h-32 text-lg border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300"
+                    className="h-32 sm:h-32 text-lg sm:text-base border-2 border-gray-200 focus:border-oratalesedi-blue rounded-xl transition-all duration-300 px-4 sm:px-3"
+                    autoComplete="off"
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-oratalesedi-blue to-oratalesedi-blue-light text-white hover:from-oratalesedi-blue-dark hover:to-oratalesedi-blue font-bold text-lg py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600 drop-shadow"
-                >
-                  Send Message
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                {/* Status Messages */}
+                {submitStatus !== 'idle' && (
+                  <div className={`p-4 rounded-lg ${
+                    submitStatus === 'success' 
+                      ? 'bg-green-50 border border-green-200 text-green-800 dark:bg-green-900/50 dark:border-green-700 dark:text-green-200' 
+                      : 'bg-red-50 border border-red-200 text-red-800 dark:bg-red-900/50 dark:border-red-700 dark:text-red-200'
+                  }`}>
+                    <div className="flex items-center">
+                      {submitStatus === 'success' ? (
+                        <CheckCircle className="h-5 w-5 mr-2" />
+                      ) : (
+                        <div className="h-5 w-5 mr-2 rounded-full border-2 border-current border-t-transparent animate-spin"></div>
+                      )}
+                      {submitMessage}
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-4">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    onClick={() => console.log('Submit button clicked')}
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 font-bold text-lg py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-2 focus:outline-blue-600 drop-shadow disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </div>
               </form>
 
               {/* Map Section */}
@@ -268,7 +357,7 @@ export default function Contact() {
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Find Our Office</h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Visit us at our head office in Emalahleni, Mpumalanga
+                    Visit us at our head office in Ben Fleur, eMalahleni, Mpumalanga
                   </p>
                 </div>
 
@@ -277,7 +366,7 @@ export default function Contact() {
                   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                     <div className="aspect-video w-full">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.1234567890123!2d29.12345678901234!3d-25.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDUyJzM1LjYiUyAyOcKwMDcnMzQuNiJF!5e0!3m2!1sen!2sza!4v1234567890123"
+                        src="https://www.google.com/maps?q=Business+Park+8+Corridor+Cres+Ben+Fleur+eMalahleni+1049&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
@@ -285,7 +374,7 @@ export default function Contact() {
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                         className="w-full h-full"
-                        title="Oratalesedi Office Location"
+                        title="Oratalesedi Office Location - Ben Fleur"
                       ></iframe>
                     </div>
                   </div>
@@ -296,7 +385,7 @@ export default function Contact() {
                     <div className="space-y-3 text-sm">
                       <div>
                         <p className="text-gray-600 dark:text-gray-300">
-                          <span className="font-medium">By Car:</span> Take N12 highway towards Witbank/Emalahleni. Exit at Lowe Street.
+                          <span className="font-medium">By Car:</span> Take the N12 towards Witbank/Emalahleni and follow signs to Ben Fleur; exit onto Corridor Crescent and follow local signs to Business Park.
                         </p>
                       </div>
                       <div>
