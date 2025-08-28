@@ -2,9 +2,9 @@ module.exports = {
   apps: [
     {
       name: "oratalesedi-app",
-      // use pnpm to run the start script (ensure pnpm is installed on the server)
-  script: "pnpm",
-  args: "start",
+  // use npm to run the start script so servers without pnpm can run PM2 easily
+  script: "npm",
+  args: "run start",
       cwd: __dirname,
       instances: 1,
       autorestart: true,
