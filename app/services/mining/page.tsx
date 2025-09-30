@@ -33,7 +33,7 @@ export default function MiningServices() {
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image src="/images/Geospatial.jpg" alt="Conveyor Belt Cleaning" fill className="object-cover" />
             </div>
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">Conveyor Belt Cleaning & Maintenance</h2>
               <p>Our core services include both open cast and underground conveyor belt maintenance and cleaning, including management and supervision.</p>
             </div>
@@ -42,14 +42,14 @@ export default function MiningServices() {
             </div>
 
             {/* Row 2 */}
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">Geospatial & Surveying Services</h2>
               <p>Through our extensive partnership model, we offer specialized geospatial and surveying services such as: 3D Terrestrial, UAV LiDAR Scanning and 3D Modelling, Drone Thermal Aerial Imaging, Engineering & Construction Survey, Bathymetric Surveys, Underground Utility Mapping, Cadastral Survey as well as Geospatial Intelligence and Geographic Information System.</p>
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image src="/images/converyor belt.jpg" alt="Surveying" fill className="object-cover" />
             </div>
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">General Building Maintenance</h2>
               <p>As part of planned and unplanned maintenance, we offer general building maintenance services for existing buildings and mining infrastructure.</p>
             </div>
@@ -58,7 +58,7 @@ export default function MiningServices() {
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image src="/images/welding.jpg" alt="Welding" fill className="object-cover" />
             </div>
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">Welding, Fabrications, Repairs & Installation</h2>
               <p>We provide state-of-the-art technology to provide forward-thinking welding engineering solutions for fabricating or joining any metal infrastructure, all executed to world-class quality control, safety and assurance standards.</p>
             </div>
@@ -67,14 +67,14 @@ export default function MiningServices() {
             </div>
 
             {/* Row 4 */}
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">Shutdown & Maintenance Works</h2>
               <p>Our experienced team of qualified artisans are key to delivering plant shutdown, repairs and maintenance services. We ensure the minimum reduced downtime and overtime, whilst swiftly getting the plant up-to-speed for maximum operational efficiency, at minimal cost.</p>
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden">
               <Image src="/images/HDEP.jpg" alt="HDPE piping" fill className="object-cover" />
             </div>
-            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+            <div className="bg-white dark:bg-blue-900 text-blue-950 dark:text-white p-8 rounded-xl flex flex-col justify-center items-center text-center shadow-md h-64">
               <h2 className="text-2xl font-bold mb-2">HDPE piping & Installation</h2>
               <p>We offer plastic welding: heat sealing, extrusion welding, spin welding, vibration welding as well as laser welding.</p>
             </div>

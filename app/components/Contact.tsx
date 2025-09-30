@@ -85,7 +85,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 relative bg-white dark:bg-blue-950">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 mt-24">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black dark:text-white mb-4 drop-shadow">Contact Us</h2>
           <p className="text-xl text-black dark:text-blue-100 max-w-3xl mx-auto drop-shadow">
@@ -122,7 +122,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Call Us</h3>
                     <p className="mb-2 text-base text-gray-700 dark:text-blue-100">Speak directly with our team</p>
-                    <a href="tel:+27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 76 996 3322</a>
+                    <a href="tel:+27769963322" className="block text-lg font-bold text-blue-700 dark:text-blue-300 mb-4">+27 13 656 0747</a>
                                           <a href="tel:+27769963322" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-300">Call Now</a>
                   </div>
                   {/* Email Us Card */}
