@@ -85,14 +85,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 relative bg-white dark:bg-blue-950">
-      <div className="container mx-auto px-4 relative z-10 mt-24">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-black dark:text-white mb-4 drop-shadow">Contact Us</h2>
-          <p className="text-xl text-black dark:text-blue-100 max-w-3xl mx-auto drop-shadow">
-            Ready to discuss your next project? Get in touch with our team for expert consultation and competitive quotes.
-          </p>
-        </div>
-
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
