@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-8">
               <Image
-                src="/images/oratalesedi-logo.png"
+                src="/images/oratalesedi-logo-01.svg"
                 alt="Oratalesedi Trading & Projects"
                 width={220}
                 height={80}

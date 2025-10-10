@@ -7,9 +7,11 @@ import { Menu, X, Phone, Mail, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import DarkModeToggle from "./DarkModeToggle"
 import { useRouter } from "next/navigation"
+import { useTheme } from "next-themes"
 
 export default function ModernHeader() {
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -124,14 +126,25 @@ export default function ModernHeader() {
                 }, 100);
               }}
             >
-              <Image
-                src="/images/oratalesedi-logo.png"
-                alt="Oratalesedi Trading & Projects"
-                width={320}
-                height={120}
-                className="h-14 w-auto transition-all duration-300 group-hover:scale-105"
-                priority
-              />
+              {resolvedTheme === 'dark' ? (
+                <Image
+                  src="/images/oratalesedi-logo-01.svg"
+                  alt="Oratalesedi Trading & Projects"
+                  width={320}
+                  height={120}
+                  className="h-14 w-auto transition-all duration-300 group-hover:scale-105"
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/images/oratalesedi-logo.png"
+                  alt="Oratalesedi Trading & Projects"
+                  width={320}
+                  height={120}
+                  className="h-14 w-auto transition-all duration-300 group-hover:scale-105"
+                  priority
+                />
+              )}
             </button>
           </div>
 
