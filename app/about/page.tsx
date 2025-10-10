@@ -96,7 +96,7 @@ export default function AboutPage() {
               <span className="text-3xl lg:text-4xl">Since 2012</span>
             </h1>
             <p className="text-xl text-black dark:text-blue-100 max-w-3xl mx-auto leading-relaxed drop-shadow">
-              A proud South African Qualifying Small Enterprise (QSE) and BBBEE Level 1 contributor, founded and
+              A proud South African Qualifying Small Enterprise (QSME) and BBBEE Level 1 contributor, founded and
               registered with CIPC on November 21st, 2012.
             </p>
           </div>

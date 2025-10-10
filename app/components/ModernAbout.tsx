@@ -52,7 +52,7 @@ export default function ModernAbout() {
             </span>
           </h2>
           <p className="text-xl text-black dark:text-blue-100 max-w-3xl mx-auto leading-relaxed drop-shadow">
-            A proud Qualifying Small Enterprise (QSE) and BBBEE Level 1 contributor, founded and registered with CIPC on
+            A proud Qualifying Small Enterprise (QSME) and BBBEE Level 1 contributor, founded and registered with CIPC on
             November 21st, 2012.
           </p>
         </div>
@@ -75,6 +75,63 @@ export default function ModernAbout() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Our Certificates */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-black dark:text-blue-100 mb-4 drop-shadow">Our Certificates</h3>
+            <p className="text-lg text-gray-900 dark:text-blue-100 max-w-2xl mx-auto leading-relaxed drop-shadow">
+              Recognized certifications that demonstrate our commitment to quality, compliance, and industry standards.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Central Supplier Database */}
+            <Card className="group bg-white dark:bg-white/10 backdrop-blur-sm border-2 border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:border-blue-200 dark:hover:border-blue-400">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6 p-4 bg-gray-800 dark:bg-gray-900 rounded-2xl">
+                  <img 
+                    src="/images/logos/central-supplier-db.png" 
+                    alt="Central Supplier Database Certificate" 
+                    className="h-20 w-auto mx-auto object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Central Supplier Database</h4>
+                <p className="text-base text-gray-600 dark:text-gray-300 font-medium">Registered Government Supplier</p>
+              </CardContent>
+            </Card>
+
+            {/* CIDB */}
+            <Card className="group bg-white dark:bg-white/10 backdrop-blur-sm border-2 border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:border-blue-200 dark:hover:border-blue-400">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6 p-4 bg-gray-800 dark:bg-gray-900 rounded-2xl">
+                  <img 
+                    src="/images/logos/cidb.png" 
+                    alt="CIDB Certificate" 
+                    className="h-20 w-auto mx-auto object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">CIDB Grade 4</h4>
+                <p className="text-base text-gray-600 dark:text-gray-300 font-medium">Construction Industry Development Board</p>
+              </CardContent>
+            </Card>
+
+            {/* NHBRC */}
+            <Card className="group bg-white dark:bg-white/10 backdrop-blur-sm border-2 border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:border-blue-200 dark:hover:border-blue-400">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6 p-4 bg-gray-800 dark:bg-gray-900 rounded-2xl">
+                  <img 
+                    src="/images/logos/nhbrc-seeklogo-01.png" 
+                    alt="NHBRC Certificate" 
+                    className="h-20 w-auto mx-auto object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">NHBRC</h4>
+                <p className="text-base text-gray-600 dark:text-gray-300 font-medium">National Home Builders Registration Council</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Main Content */}

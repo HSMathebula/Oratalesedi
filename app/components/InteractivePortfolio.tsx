@@ -195,16 +195,28 @@ export default function InteractivePortfolio() {
               <p className="text-center text-lg mb-8 text-blue-100">We are proud to work with some of the most respected names in the mining industry.</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
-                  <img src="/images/logos/AngloAmerican_White-Maurice-Rankin.png" alt="Anglo American" className="h-16 object-contain" />
+                  <img src="/images/logos/anglo-american.png" alt="Anglo American" className="h-16 object-contain" />
                 </div>
                 <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
-                  <img src="/images/logos/nhbrc-seeklogo-01.png" alt="Eskom Trial" className="h-16 object-contain" />
+                  <img src="/images/logos/wbho.png" alt="Eskom Trial" className="h-16 object-contain" />
                 </div>
                 <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
                   <img src="/images/logos/g4s-seeklogo-01.png" alt="Caterpillar" className="h-16 object-contain" />
                 </div>
                 <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
                   <img src="/images/logos/eskom-seeklogo-01.png" alt="JEDD Civils" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/jedd.png" alt="Anglo American" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/mafube.png" alt="Eskom Trial" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/malahleni-LM.png" alt="Caterpillar" className="h-16 object-contain" />
+                </div>
+                <div className="bg-blue-900 dark:bg-blue-800 p-6 rounded-xl flex items-center justify-center shadow-md border border-blue-700">
+                  <img src="/images/logos/thungela.png" alt="JEDD Civils" className="h-16 object-contain" />
                 </div>
               </div>
             </div>
