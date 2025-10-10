@@ -26,7 +26,7 @@ export default function MiningServices() {
         </div>
         <div className="max-w-6xl mx-auto px-4">
           <p className="text-center text-lg max-w-3xl mx-auto mb-12">
-            As a QSE and Black Woman-Owned company, we have a deep-rooted understanding of the mining industry and its unique challenges. We have grown and thrived within this environment, gaining valuable experience and expertise. Our commitment to excellence and innovation has enabled us to deliver exceptional services to several mining companies within the Mpumalanga province, with Mafube Coal and Thungela being our biggest clients. We are dedicated to partnering with mines to optimize their operations, improve safety, and enhance sustainability.
+            As a QSME and Black Woman-Owned company, we have a deep-rooted understanding of the mining industry and its unique challenges. We have grown and thrived within this environment, gaining valuable experience and expertise. Our commitment to excellence and innovation has enabled us to deliver exceptional services to several mining companies within the Mpumalanga province, with Mafube Coal and Thungela being our biggest clients. We are dedicated to partnering with mines to optimize their operations, improve safety, and enhance sustainability.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Row 1 */}
