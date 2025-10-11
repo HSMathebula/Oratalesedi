@@ -147,8 +147,8 @@ export async function POST(request: NextRequest) {
     const validData = result.data
 
     // Check if email configuration is set up
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('Email configuration missing. Please set up EMAIL_USER and EMAIL_PASS environment variables.')
+    if (!process.env.SMTP_LOGIN || !process.env.SMTP_PASSWORD) {
+      console.error('Email configuration missing. Please set up SMTP_LOGIN and SMTP_PASSWORD environment variables.')
       return NextResponse.json(
         {
           success: false,
