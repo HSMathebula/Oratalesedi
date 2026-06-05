@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Oratalesedi Projects</title>
+    <meta name="description" content="Request a quote for mining services, construction, or renewable energy projects from Oratalesedi Projects.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logos/oratalesedi-logo-blue.png" alt="Oratalesedi Logo" class="logo-img light-logo">
+                <img src="images/logos/oratalesedi-logo-white.png" alt="Oratalesedi Logo" class="logo-img dark-logo">
+            </a>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        Services
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="services/mining.html" class="dropdown-item">Mining Services</a>
+                        <a href="services/construction.html" class="dropdown-item">Construction</a>
+                        <a href="services/renewable-energy.html" class="dropdown-item">Renewable Energy</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="quote.html" class="btn btn-primary header-cta active">Get a Quote</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="mobile-nav">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <div class="mobile-dropdown">
+                    <button class="mobile-nav-link mobile-dropdown-trigger">
+                        Services
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-menu">
+                        <a href="services/mining.html" class="mobile-dropdown-item">Mining Services</a>
+                        <a href="services/construction.html" class="mobile-dropdown-item">Construction</a>
+                        <a href="services/renewable-energy.html" class="mobile-dropdown-item">Renewable Energy</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-nav-link">About</a>
+                <a href="portfolio.html" class="mobile-nav-link">Portfolio</a>
+                <a href="contact.html" class="mobile-nav-link">Contact</a>
+                <a href="quote.html" class="btn btn-primary mobile-cta">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero page-hero-short" style="background-image: url('images/oratalesedi-hero-img.jpg');">
+            <div class="page-hero-overlay"></div>
+            <div class="page-hero-gradient"></div>
+            <div class="container page-hero-content">
+                <div class="badge badge-blue">
+                    <span class="badge-dot"></span>
+                    Request a Quote
+                </div>
+                <h1 class="page-hero-title">
+                    Get Your <span class="text-gradient">Free Quote</span>
+                </h1>
+                <p class="page-hero-subtitle">
+                    Complete the form below and our team will get back to you within 24-48 hours.
+                </p>
+            </div>
+        </section>
+
+        <!-- Quote Form Section -->
+        <section class="section">
+            <div class="container">
+                <div class="quote-form-container">
+                    <!-- Progress Steps -->
+                    <div class="quote-progress">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <span class="step-label">Project Details</span>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <span class="step-label">Contact Info</span>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <span class="step-label">Review</span>
+                        </div>
+                    </div>
+                    
+                    <form id="quoteForm" class="quote-form" action="php/quote.php" method="POST">
+                        <!-- Step 1: Project Details -->
+                        <div class="form-step active" data-step="1">
+                            <div class="step-info">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <p><strong>Step 1:</strong> Select your service type and provide project details. This helps us understand your needs better.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Service Type <span class="required">*</span></label>
+                                <div class="service-type-grid">
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="mining" required>
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                            <span>Mining Services</span>
+                                        </div>
+                                    </label>
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="construction">
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                            <span>Construction</span>
+                                        </div>
+                                    </label>
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="renewable">
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                            <span>Renewable Energy</span>
+                                        </div>
+                                    </label>
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="staffing">
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                            <span>Staffing Solutions</span>
+                                        </div>
+                                    </label>
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="transport">
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                                            <span>Transport & Logistics</span>
+                                        </div>
+                                    </label>
+                                    <label class="service-type-option">
+                                        <input type="radio" name="projectType" value="multiple">
+                                        <div class="service-type-card">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                            <span>Multiple Services</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="projectScope">Project Scope <span class="required">*</span></label>
+                                <select id="projectScope" name="projectScope" required>
+                                    <option value="">Select project scope</option>
+                                    <option value="small">Small Project (Under R1M)</option>
+                                    <option value="medium">Medium Project (R1M - R10M)</option>
+                                    <option value="large">Large Project (R10M - R50M)</option>
+                                    <option value="enterprise">Enterprise Project (Over R50M)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="timeline">Expected Timeline</label>
+                                    <select id="timeline" name="timeline">
+                                        <option value="">Select timeline</option>
+                                        <option value="immediate">Immediate (Within 1 month)</option>
+                                        <option value="short">Short-term (1-3 months)</option>
+                                        <option value="medium">Medium-term (3-6 months)</option>
+                                        <option value="long">Long-term (6+ months)</option>
+                                        <option value="ongoing">Ongoing / Continuous</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="budget">Budget Range</label>
+                                    <select id="budget" name="budget">
+                                        <option value="">Select budget range</option>
+                                        <option value="under500k">Under R500,000</option>
+                                        <option value="500k-1m">R500,000 - R1M</option>
+                                        <option value="1m-5m">R1M - R5M</option>
+                                        <option value="5m-10m">R5M - R10M</option>
+                                        <option value="10m-50m">R10M - R50M</option>
+                                        <option value="over50m">Over R50M</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Project Description <span class="required">*</span></label>
+                                <textarea id="description" name="description" rows="5" required placeholder="Please describe your project requirements, specific needs, and any relevant details..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Contact Information -->
+                        <div class="form-step" data-step="2">
+                            <div class="step-info">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <p><strong>Step 2:</strong> Provide your contact details so we can reach you with your customized quote.</p>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="company">Company Name <span class="required">*</span></label>
+                                    <input type="text" id="company" name="company" required placeholder="Your Company Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPerson">Contact Person <span class="required">*</span></label>
+                                    <input type="text" id="contactPerson" name="contactPerson" required placeholder="Full Name">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" required placeholder="email@company.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="+27 XX XXX XXXX">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location">Project Location</label>
+                                <input type="text" id="location" name="location" placeholder="City, Province, South Africa">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="urgency">Quote Urgency</label>
+                                <select id="urgency" name="urgency">
+                                    <option value="standard">Standard (24-48 hours)</option>
+                                    <option value="urgent">Urgent (Within 24 hours)</option>
+                                    <option value="asap">ASAP (Same day if possible)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Review -->
+                        <div class="form-step" data-step="3">
+                            <div class="step-info step-info-review">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <p><strong>Step 3:</strong> Please review your information carefully. Click "Confirm & Submit Quote Request" when you're ready to proceed.</p>
+                            </div>
+                            
+                            <div class="review-section">
+                                <h3>Review Your Quote Request</h3>
+                                <div class="review-grid">
+                                    <div class="review-column">
+                                        <h4>Project Information</h4>
+                                        <div class="review-item">
+                                            <span class="review-label">Service Type:</span>
+                                            <span class="review-value" id="reviewProjectType">Not selected</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Scope:</span>
+                                            <span class="review-value" id="reviewScope">Not specified</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Timeline:</span>
+                                            <span class="review-value" id="reviewTimeline">Not specified</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Budget:</span>
+                                            <span class="review-value" id="reviewBudget">Not specified</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-column">
+                                        <h4>Contact Information</h4>
+                                        <div class="review-item">
+                                            <span class="review-label">Company:</span>
+                                            <span class="review-value" id="reviewCompany">Not provided</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Contact:</span>
+                                            <span class="review-value" id="reviewContact">Not provided</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Email:</span>
+                                            <span class="review-value" id="reviewEmail">Not provided</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Phone:</span>
+                                            <span class="review-value" id="reviewPhone">Not provided</span>
+                                        </div>
+                                        <div class="review-item">
+                                            <span class="review-label">Location:</span>
+                                            <span class="review-value" id="reviewLocation">Not specified</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-description">
+                                    <h4>Project Description</h4>
+                                    <p id="reviewDescription">Not provided</p>
+                                </div>
+                            </div>
+                            
+                            <div class="what-happens-next">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <div>
+                                    <h4>What happens next?</h4>
+                                    <ul>
+                                        <li>Our team will review your requirements within 2 hours</li>
+                                        <li>You'll receive a detailed quote within 24-48 hours</li>
+                                        <li>We'll schedule a consultation call to discuss your project</li>
+                                        <li>Upon approval, we'll begin project planning immediately</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="confirm-section" id="confirmSection">
+                                <button type="button" class="btn btn-success btn-lg" id="confirmBtn">
+                                    Confirm & Submit Quote Request
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                </button>
+                            </div>
+                            
+                            <div class="confirmed-section" id="confirmedSection" style="display: none;">
+                                <div class="confirmed-message">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    <span>Ready to submit! Click the submit button below.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Status -->
+                        <div id="formStatus" class="form-status"></div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" id="prevBtn" disabled>Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">
+                                Next Step
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                            <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;" disabled>
+                                <span class="btn-text">Submit Quote Request</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <svg class="spinner" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle>
+                                        <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Submitting...
+                                </span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Why Choose Oratalesedi?</h2>
+                    <p class="section-subtitle">We deliver exceptional value through our expertise, reliability, and commitment to excellence.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon bg-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3>Proven Track Record</h3>
+                        <p>Over R70M in successfully completed projects across South Africa</p>
+                    </div>
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon bg-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Fast Response Time</h3>
+                        <p>24-hour quote turnaround and immediate project consultation</p>
+                    </div>
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon bg-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <h3>Certified Excellence</h3>
+                        <p>ISO 9001, 14001, 45001 certified with CIDB Grade 4 rating</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logos/oratalesedi-logo-white.png" alt="Oratalesedi Logo" class="footer-logo">
+                    <p class="footer-description">Building South Africa's future through excellence in mining services, construction, and renewable energy solutions.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul>
+                        <li><a href="services/mining.html">Mining Services</a></li>
+                        <li><a href="services/construction.html">Construction</a></li>
+                        <li><a href="services/renewable-energy.html">Renewable Energy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Johannesburg, South Africa
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            +27 XX XXX XXXX
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            info@oratalesedi.co.za
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Oratalesedi Projects (Pty) Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/quote-form.js"></script>
+</body>
+</html>
