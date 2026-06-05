@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Oratalesedi Projects</title>
+    <meta name="description" content="Learn about Oratalesedi Projects - South Africa's trusted partner in mining services, construction, and renewable energy solutions since 2019.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logos/oratalesedi-logo-blue.png" alt="Oratalesedi Logo" class="logo-img light-logo">
+                <img src="images/logos/oratalesedi-logo-white.png" alt="Oratalesedi Logo" class="logo-img dark-logo">
+            </a>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        Services
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="services/mining.html" class="dropdown-item">Mining Services</a>
+                        <a href="services/construction.html" class="dropdown-item">Construction</a>
+                        <a href="services/renewable-energy.html" class="dropdown-item">Renewable Energy</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="quote.html" class="btn btn-primary header-cta">Get a Quote</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="mobile-nav">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <div class="mobile-dropdown">
+                    <button class="mobile-nav-link mobile-dropdown-trigger">
+                        Services
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-menu">
+                        <a href="services/mining.html" class="mobile-dropdown-item">Mining Services</a>
+                        <a href="services/construction.html" class="mobile-dropdown-item">Construction</a>
+                        <a href="services/renewable-energy.html" class="mobile-dropdown-item">Renewable Energy</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-nav-link active">About</a>
+                <a href="portfolio.html" class="mobile-nav-link">Portfolio</a>
+                <a href="contact.html" class="mobile-nav-link">Contact</a>
+                <a href="quote.html" class="btn btn-primary mobile-cta">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero" style="background-image: url('images/oratalesedi-hero-img.jpg');">
+            <div class="page-hero-overlay"></div>
+            <div class="page-hero-gradient"></div>
+            <div class="container page-hero-content">
+                <div class="badge badge-blue">
+                    <span class="badge-dot"></span>
+                    Our Story
+                </div>
+                <h1 class="page-hero-title">
+                    About <span class="text-gradient">Oratalesedi</span>
+                </h1>
+                <p class="page-hero-subtitle">
+                    Building South Africa's future through excellence in mining, construction, and renewable energy since 2019.
+                </p>
+            </div>
+        </section>
+
+        <!-- Company Overview -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content scroll-reveal">
+                        <div class="badge badge-blue">
+                            <span class="badge-dot"></span>
+                            Who We Are
+                        </div>
+                        <h2 class="section-title text-left">A Legacy of Excellence</h2>
+                        <p class="about-text">
+                            Oratalesedi Projects (Pty) Ltd is a 100% black woman-owned company established in 2019. We are dedicated to providing comprehensive solutions across mining services, construction, and renewable energy sectors throughout South Africa.
+                        </p>
+                        <p class="about-text">
+                            Our commitment to excellence, safety, and sustainable practices has positioned us as a trusted partner for major industry players, delivering projects valued at over R70 million with a 100% success rate.
+                        </p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <span class="about-stat-number">2019</span>
+                                <span class="about-stat-label">Established</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="about-stat-number">100%</span>
+                                <span class="about-stat-label">Black Woman-Owned</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="about-stat-number">R70M+</span>
+                                <span class="about-stat-label">Project Value</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image scroll-reveal">
+                        <img src="images/oratalesedi-hero-img.jpg" alt="Oratalesedi Projects Team">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <div class="badge badge-blue">
+                        <span class="badge-dot"></span>
+                        Our Purpose
+                    </div>
+                    <h2 class="section-title">Mission & Vision</h2>
+                </div>
+                <div class="mission-vision-grid">
+                    <div class="mission-card scroll-reveal">
+                        <div class="mission-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="mission-title">Our Mission</h3>
+                        <p class="mission-text">
+                            To deliver exceptional, innovative solutions in mining, construction, and renewable energy while maintaining the highest standards of safety, quality, and environmental responsibility. We are committed to empowering communities and creating sustainable value for all stakeholders.
+                        </p>
+                    </div>
+                    <div class="vision-card scroll-reveal">
+                        <div class="vision-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="vision-title">Our Vision</h3>
+                        <p class="vision-text">
+                            To be South Africa's leading integrated solutions provider in mining services, construction, and renewable energy, recognized for our commitment to excellence, innovation, and sustainable development that transforms industries and uplifts communities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <div class="badge badge-blue">
+                        <span class="badge-dot"></span>
+                        Our Foundation
+                    </div>
+                    <h2 class="section-title">Core Values</h2>
+                    <p class="section-subtitle">The principles that guide everything we do</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Safety First</h3>
+                        <p class="value-text">Zero compromise on health and safety standards in all our operations.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Excellence</h3>
+                        <p class="value-text">Delivering quality work that exceeds expectations, every time.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Integrity</h3>
+                        <p class="value-text">Honest, transparent business practices that build lasting trust.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-orange">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Sustainability</h3>
+                        <p class="value-text">Committed to environmental responsibility and sustainable practices.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Innovation</h3>
+                        <p class="value-text">Embracing new technologies and methods to deliver better solutions.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-icon bg-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Community</h3>
+                        <p class="value-text">Empowering local communities through job creation and development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <div class="badge badge-blue">
+                        <span class="badge-dot"></span>
+                        Accreditations
+                    </div>
+                    <h2 class="section-title">Certifications & Compliance</h2>
+                    <p class="section-subtitle">Meeting the highest industry standards</p>
+                </div>
+                <div class="certifications-grid">
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">ISO 9001:2015</h3>
+                        <p class="certification-text">Quality Management System</p>
+                    </div>
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">ISO 14001:2015</h3>
+                        <p class="certification-text">Environmental Management</p>
+                    </div>
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">ISO 45001:2018</h3>
+                        <p class="certification-text">Occupational Health & Safety</p>
+                    </div>
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">CIDB Grade 4</h3>
+                        <p class="certification-text">Construction Industry Development Board</p>
+                    </div>
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <polyline points="17 11 19 13 23 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">Level 1 B-BBEE</h3>
+                        <p class="certification-text">Broad-Based Black Economic Empowerment</p>
+                    </div>
+                    <div class="certification-card scroll-reveal">
+                        <div class="certification-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="certification-title">CSD Registered</h3>
+                        <p class="certification-text">Central Supplier Database</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container text-center">
+                <h2 class="cta-title">Ready to Partner With Us?</h2>
+                <p class="cta-subtitle">Let's discuss how we can bring your project to life with excellence and reliability.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Contact Us</a>
+                    <a href="quote.html" class="btn btn-outline btn-lg">Get a Quote</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logos/oratalesedi-logo-white.png" alt="Oratalesedi Logo" class="footer-logo">
+                    <p class="footer-description">Building South Africa's future through excellence in mining services, construction, and renewable energy solutions.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul>
+                        <li><a href="services/mining.html">Mining Services</a></li>
+                        <li><a href="services/construction.html">Construction</a></li>
+                        <li><a href="services/renewable-energy.html">Renewable Energy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Johannesburg, South Africa
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            +27 XX XXX XXXX
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            info@oratalesedi.co.za
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Oratalesedi Projects (Pty) Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
