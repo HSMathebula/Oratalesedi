@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initScrollReveal();
   initServiceTabs();
   initPortfolioCards();
+  initPortfolioFilters();
   initFloatingElements();
   initSmoothScroll();
 });
@@ -21,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
  * Dark Mode Toggle
  */
 function initDarkMode() {
-  const toggle = document.querySelector('.dark-mode-toggle');
-  if (!toggle) return;
+  const toggles = document.querySelectorAll('.dark-mode-toggle');
+  if (!toggles.length) return;
   
   // Check for saved preference or system preference
   const savedTheme = localStorage.getItem('theme');
@@ -30,26 +31,21 @@ function initDarkMode() {
   
   if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
     document.documentElement.setAttribute('data-theme', 'dark');
-    updateToggleText(toggle, true);
   }
   
-  toggle.addEventListener('click', function() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    
-    if (isDark) {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      updateToggleText(toggle, false);
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      updateToggleText(toggle, true);
-    }
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
   });
-}
-
-function updateToggleText(toggle, isDark) {
-  toggle.textContent = isDark ? '🌙 Dark' : '☀️ Light';
 }
 
 /**
@@ -79,20 +75,43 @@ function initMobileMenu() {
   const mobileMenu = document.querySelector('.mobile-menu');
   if (!menuBtn || !mobileMenu) return;
   
-  menuBtn.addEventListener('click', function() {
+  menuBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
     mobileMenu.classList.toggle('active');
     
-    // Update button icon
-    const isOpen = mobileMenu.classList.contains('active');
-    menuBtn.innerHTML = isOpen 
-      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>'
-      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    // Update hamburger lines for animation
+    const lines = menuBtn.querySelectorAll('.hamburger-line');
+    if (lines.length) {
+      const isOpen = mobileMenu.classList.contains('active');
+      if (isOpen) {
+        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        lines[1].style.opacity = '0';
+        lines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        lines[0].style.transform = '';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = '';
+      }
+    } else {
+      // Fallback for old icon structure
+      const isOpen = mobileMenu.classList.contains('active');
+      menuBtn.innerHTML = isOpen 
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    }
   });
   
   // Close menu when clicking outside
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.mobile-menu-container')) {
+    if (!e.target.closest('.mobile-menu-container') && !e.target.closest('.header')) {
       mobileMenu.classList.remove('active');
+      // Reset hamburger lines
+      const lines = menuBtn.querySelectorAll('.hamburger-line');
+      if (lines.length) {
+        lines[0].style.transform = '';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = '';
+      }
     }
   });
   
@@ -102,12 +121,28 @@ function initMobileMenu() {
       mobileMenu.classList.remove('active');
     });
   });
+  
+  // Mobile dropdown toggles
+  document.querySelectorAll('.mobile-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      const dropdown = this.closest('.mobile-dropdown');
+      dropdown.classList.toggle('active');
+      
+      // Rotate icon
+      const icon = this.querySelector('.dropdown-icon');
+      if (icon) {
+        icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : '';
+      }
+    });
+  });
 }
 
 /**
  * Services Dropdown
  */
 function initServicesDropdown() {
+  // Handle click-based dropdowns (for mobile/touch)
   const dropdowns = document.querySelectorAll('.dropdown');
   
   dropdowns.forEach(dropdown => {
@@ -128,10 +163,26 @@ function initServicesDropdown() {
     }
   });
   
+  // Handle hover-based dropdowns (for desktop nav)
+  const navDropdowns = document.querySelectorAll('.nav-dropdown');
+  
+  navDropdowns.forEach(dropdown => {
+    dropdown.addEventListener('mouseenter', function() {
+      this.classList.add('active');
+    });
+    
+    dropdown.addEventListener('mouseleave', function() {
+      this.classList.remove('active');
+    });
+  });
+  
   // Close dropdowns when clicking outside
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
+    if (!e.target.closest('.dropdown') && !e.target.closest('.nav-dropdown')) {
       dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
+      navDropdowns.forEach(dropdown => {
         dropdown.classList.remove('active');
       });
     }
@@ -332,6 +383,39 @@ function initPortfolioCards() {
       if (!wasSelected) {
         this.classList.add('selected');
       }
+    });
+  });
+}
+
+/**
+ * Portfolio Filtering
+ */
+function initPortfolioFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+  if (!filterBtns.length || !portfolioItems.length) return;
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.dataset.filter;
+      
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter items
+      portfolioItems.forEach(item => {
+        const category = item.dataset.category;
+        
+        if (filter === 'all' || category === filter) {
+          item.classList.remove('hidden');
+          item.style.display = '';
+        } else {
+          item.classList.add('hidden');
+          item.style.display = 'none';
+        }
+      });
     });
   });
 }
